@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<installation xmlns="urn:jboss:galleon:provisioning:3.0">
+    <feature-pack location="org.wildfly:wildfly-preview-feature-pack:29.0.1.Final"/>
+    <feature-pack location="org.wildfly:wildfly-datasources-preview-galleon-pack:5.0.0.Final"/>
+    <feature-pack location="org.wildfly.extras.grpc:wildfly-grpc-preview-feature-pack:0.1.2.Final"/>
+</installation>
