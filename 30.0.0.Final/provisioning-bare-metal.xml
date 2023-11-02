@@ -4,4 +4,5 @@
     <feature-pack location="org.wildfly:wildfly-galleon-pack:30.0.0.Final"/>
     <feature-pack location="org.wildfly:wildfly-datasources-galleon-pack:6.0.0.Final"/>
     <feature-pack location="org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.2.Final"/>
+    <feature-pack location="org.wildfly:wildfly-myfaces-feature-pack:2.0.0.Final"/>
 </installation>
