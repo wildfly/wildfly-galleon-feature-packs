@@ -133,6 +133,20 @@ test \
 "postgresql" \
 ""
 
+echo saml auto-registration
+test \
+"[keycloak-saml, servlet]==>ee-core-profile-server,keycloak-saml" \
+"tests/war/saml-app-auto-reg.war" \
+"" \
+"" \
+"" \
+cloud
+
+echo saml
+test \
+"[datasources, keycloak-client-saml, keycloak-saml, servlet]==>ee-core-profile-server,datasources,keycloak-client-saml" \
+"tests/war/servlet-saml-service-provider.war"
+
 ### END Extra feature-packs testing
 
 
