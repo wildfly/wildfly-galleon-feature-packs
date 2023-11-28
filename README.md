@@ -42,7 +42,7 @@ New Galleon feature-packs can be added to this repository. Such Galleon feature-
 * Must have proven to offer added-value to WildFly server. 
 * Must contain Galleon layers well designed for WildFly Glow automatic discovery (Galleon layers containing the metadata required by [WildFly Glow](https://github.com/wildfly/wildfly-glow)).
 
-If you think that your Galleon feature-packs meet these expectations, open a Pull Request against the `main` branch 
+If you think that your Galleon feature-packs meet these expectations, open a Pull Request against the `release` branch 
 of this repository with the following requirements:
 
 
