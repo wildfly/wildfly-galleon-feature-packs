@@ -444,21 +444,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Jean-Francois Denise</span><br>
 <span id="revnumber">version 1.0.0.Final,</span>
-<span id="revdate">2023-11-29T12:34:20Z</span>
+<span id="revdate">2023-11-29T13:18:42Z</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_support_for_wildfly_30_0_0_final">1. Support for WildFly 30.0.0.Final</a>
+<li><a href="#_rules_descriptions">1. Rules descriptions</a></li>
+<li><a href="#_support_for_wildfly_30_0_0_final">2. Support for WildFly 30.0.0.Final</a>
 <ul class="sectlevel2">
-<li><a href="#_bare_metal">1.1. bare-metal</a></li>
-<li><a href="#_cloud">1.2. cloud</a></li>
+<li><a href="#_bare_metal">2.1. bare-metal</a></li>
+<li><a href="#_cloud">2.2. cloud</a></li>
 </ul>
 </li>
-<li><a href="#_support_for_wildfly_preview_30_0_0_final">2. Support for WildFly Preview 30.0.0.Final</a>
+<li><a href="#_support_for_wildfly_preview_30_0_0_final">3. Support for WildFly Preview 30.0.0.Final</a>
 <ul class="sectlevel2">
-<li><a href="#_bare_metal_2">2.1. bare-metal</a></li>
-<li><a href="#_cloud_2">2.2. cloud</a></li>
+<li><a href="#_bare_metal_2">3.1. bare-metal</a></li>
+<li><a href="#_cloud_2">3.2. cloud</a></li>
 </ul>
 </li>
 </ul>
@@ -470,15 +471,133 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>&#169; 2023 The original authors.</p>
 </div>
+<div class="paragraph">
+<p>This documentation contains the information related to the latest WildFly version
+set of Galleon feature-packs that <a href="http://docs.wildfly.org/wildfly-glow/">WildFly Glow</a> supports.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_support_for_wildfly_30_0_0_final"><a class="anchor" href="#_support_for_wildfly_30_0_0_final"></a><a class="link" href="#_support_for_wildfly_30_0_0_final">1. Support for WildFly 30.0.0.Final</a></h2>
+<h2 id="_rules_descriptions"><a class="anchor" href="#_rules_descriptions"></a><a class="link" href="#_rules_descriptions">1. <a id="glow.table.rules"></a>Rules descriptions</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.add-on"></a>org.wildfly.rule.add-on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tag a layer as being an add-on in a family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family,name. e.g.: <code>management,wildfly-cli</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.add-on-cardinality"></a>org.wildfly.rule.add-on-cardinality</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Max number of add-ons enabled in the family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An integer. e.g.: <code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.add-on-depends-on"></a>org.wildfly.rule.add-on-depends-on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Layers expected to be discovered for the add-on to be proposed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can be one of <code>all-dependencies,none,only:&lt;list of layers&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.add-on-description"></a>org.wildfly.rule.add-on-description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g.: <code>Server command line tools: jboss-cli, add-user, elytron-tool</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.add-on-fix-"></a>org.wildfly.rule.add-on-fix-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The rule fixes an error. The rule name must be suffixed with the type of error. Known error types: <code>no-default-datasource</code>, fix a missing default datasource, <code>unbound-datasources</code>, fix an unbound datasource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No value for <code>no-default-datasource</code>. For <code>unbound-datasources</code>, env variable with <code>ITEM</code> value replaced by discovered JNDI path. e.g.: <code>JNDI env,MSSQLSERVER_JNDI=ITEM</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.annotations"></a>org.wildfly.rule.annotations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected annotations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: <code>org.eclipse.microprofile.config.inject</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.bring-datasource"></a>org.wildfly.rule.bring-datasource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings a given datasource.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The JNDI path of the datasource. e.g.: <code>java:jboss/datasources/ExampleDS</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.class"></a>org.wildfly.rule.class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Java type.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: <code>jakarta.ws.rs,jakarta.ws.rs.core</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.configuration"></a>org.wildfly.rule.configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The URL where to find yaml file containing the configuration (env variables to configure the layer).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g.: <code><a href="https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml" class="bare">https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.expect-add-on-family"></a>org.wildfly.rule.expect-add-on-family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family of add-on expected by the layer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g.: <code>messaging</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.expected-file"></a>org.wildfly.rule.expected-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix <code>&lt;rule name&gt;-&lt;suffix&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of file paths. e.g.: <code>[/META-INF/beans.xml,/WEB-INF/beans.xml]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.hidden-if"></a>org.wildfly.rule.hidden-if</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A conditional rule to hide a layer if the condition is <code>true</code>. This rule name is followed by the conditioned rule: <code>org.wildfly.rule.hidden-if-&lt;conditioned rule&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g.: rule <code>org.wildfly.rule.hidden-if-org.wildfly.rule.not-expected-file=/WEB-INF/keycloak.json</code>, <code>keycloak-client-saml</code> layer is hidden if <code>/WEB-INF/keycloak.json</code> is not present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.inclusion-mode"></a>org.wildfly.rule.inclusion-mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Layers automatically included if all its dependencies are found.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g.: <code>all-dependencies</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.kind"></a>org.wildfly.rule.kind</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A kind of layer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can be <code>base-layer</code>, an aggregator, <code>default-base-layer</code>, the default base layer to include in all cases, <code>metadata-only</code> a layer that doesn&#8217;t bring feature, just metadata to help discovery.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.no-configuration-if"></a>org.wildfly.rule.no-configuration-if</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A conditional rule. Do not propose configuration if the condition is <code>true</code>. This rule name is followed by the conditioned rule: <code>org.wildfly.rule.no-configuration-if-&lt;conditioned rule&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g.: <code>org.wildfly.rule.no-configuration-if-org.wildfly.rule.expected-file-oidc=/WEB-INF/oidc.json</code>, if <code>/WEB-INF/oidc.json</code> is found, do not propose Cloud specific OIDC environment variables.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.not-expected-file"></a>org.wildfly.rule.not-expected-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Do not expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix <code>&lt;rule name&gt;-&lt;suffix&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of file paths. e.g.: <code>[/META-INF/beans.xml,/WEB-INF/beans.xml]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.profile-"></a>org.wildfly.rule.profile-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">References the counter part layer for the given profile. The rule name must be suffixed with the profile name. Known profile is 'ha'.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g.: Inside <code>singleton-ha</code> layer, this rule references the <code>org.wildfly.rule.profile-ha=singleton-local</code>. It means that when <code>singleton-local</code> is discovered and ha profile is enabled, <code>singleton-ha</code> is included.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.properties-file-match"></a>org.wildfly.rule.properties-file-match</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Match content inside an array of properties files. If multiple rules exist, the rule name can be extended with a suffix <code>&lt;rule name&gt;-&lt;suffix&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g.: <code>[/META-INF/microprofile-config.properties,/WEB-INF/classes/META-INF/microprofile-config.properties],mp.messaging.incoming..connector,smallrye-kafka</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="glow.org.wildfly.rule.xml-path"></a>org.wildfly.rule.xml-path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix <code>&lt;rule name&gt;-&lt;suffix&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Array of files followed by expected path and value. e.g.: <code>[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_support_for_wildfly_30_0_0_final"><a class="anchor" href="#_support_for_wildfly_30_0_0_final"></a><a class="link" href="#_support_for_wildfly_30_0_0_final">2. Support for WildFly 30.0.0.Final</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_bare_metal"><a class="anchor" href="#_bare_metal"></a><a class="link" href="#_bare_metal">1.1. bare-metal</a></h3>
+<h3 id="_bare_metal"><a class="anchor" href="#_bare_metal"></a><a class="link" href="#_bare_metal">2.1. bare-metal</a></h3>
 <div class="sect3">
-<h4 id="_supported_galleon_feature_packs"><a class="anchor" href="#_supported_galleon_feature_packs"></a><a class="link" href="#_supported_galleon_feature_packs">1.1.1. Supported Galleon feature-packs</a></h4>
+<h4 id="_supported_galleon_feature_packs"><a class="anchor" href="#_supported_galleon_feature_packs"></a><a class="link" href="#_supported_galleon_feature_packs">2.1.1. Supported Galleon feature-packs</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -506,7 +625,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect3">
-<h4 id="_galleon_layers_and_associated_discovery_rules"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules">1.1.2. <a id="glow.table.bare-metal"></a>Galleon layers and associated discovery rules</a></h4>
+<h4 id="_galleon_layers_and_associated_discovery_rules"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules">2.1.2. <a id="glow.table.bare-metal"></a>Galleon layers and associated discovery rules</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1092,9 +1211,9 @@ org.wildfly:wildfly-ee-galleon-pack:30.0.0.Final</pre></div></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cloud"><a class="anchor" href="#_cloud"></a><a class="link" href="#_cloud">1.2. cloud</a></h3>
+<h3 id="_cloud"><a class="anchor" href="#_cloud"></a><a class="link" href="#_cloud">2.2. cloud</a></h3>
 <div class="sect3">
-<h4 id="_supported_galleon_feature_packs_2"><a class="anchor" href="#_supported_galleon_feature_packs_2"></a><a class="link" href="#_supported_galleon_feature_packs_2">1.2.1. Supported Galleon feature-packs</a></h4>
+<h4 id="_supported_galleon_feature_packs_2"><a class="anchor" href="#_supported_galleon_feature_packs_2"></a><a class="link" href="#_supported_galleon_feature_packs_2">2.2.1. Supported Galleon feature-packs</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1125,7 +1244,7 @@ org.wildfly:wildfly-ee-galleon-pack:30.0.0.Final</pre></div></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_galleon_layers_and_associated_discovery_rules_2"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules_2"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules_2">1.2.2. <a id="glow.table.cloud"></a>Galleon layers and associated discovery rules</a></h4>
+<h4 id="_galleon_layers_and_associated_discovery_rules_2"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules_2"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules_2">2.2.2. <a id="glow.table.cloud"></a>Galleon layers and associated discovery rules</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -1784,12 +1903,12 @@ org.wildfly:wildfly-ee-galleon-pack:30.0.0.Final</pre></div></td>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_support_for_wildfly_preview_30_0_0_final"><a class="anchor" href="#_support_for_wildfly_preview_30_0_0_final"></a><a class="link" href="#_support_for_wildfly_preview_30_0_0_final">2. Support for WildFly Preview 30.0.0.Final</a></h2>
+<h2 id="_support_for_wildfly_preview_30_0_0_final"><a class="anchor" href="#_support_for_wildfly_preview_30_0_0_final"></a><a class="link" href="#_support_for_wildfly_preview_30_0_0_final">3. Support for WildFly Preview 30.0.0.Final</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_bare_metal_2"><a class="anchor" href="#_bare_metal_2"></a><a class="link" href="#_bare_metal_2">2.1. bare-metal</a></h3>
+<h3 id="_bare_metal_2"><a class="anchor" href="#_bare_metal_2"></a><a class="link" href="#_bare_metal_2">3.1. bare-metal</a></h3>
 <div class="sect3">
-<h4 id="_supported_galleon_feature_packs_3"><a class="anchor" href="#_supported_galleon_feature_packs_3"></a><a class="link" href="#_supported_galleon_feature_packs_3">2.1.1. Supported Galleon feature-packs</a></h4>
+<h4 id="_supported_galleon_feature_packs_3"><a class="anchor" href="#_supported_galleon_feature_packs_3"></a><a class="link" href="#_supported_galleon_feature_packs_3">3.1.1. Supported Galleon feature-packs</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1808,7 +1927,7 @@ org.wildfly:wildfly-ee-galleon-pack:30.0.0.Final</pre></div></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_galleon_layers_and_associated_discovery_rules_3"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules_3"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules_3">2.1.2. <a id="glow.table.bare-metal"></a>Galleon layers and associated discovery rules</a></h4>
+<h4 id="_galleon_layers_and_associated_discovery_rules_3"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules_3"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules_3">3.1.2. <a id="glow.table.bare-metal"></a>Galleon layers and associated discovery rules</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -2394,9 +2513,9 @@ org.wildfly:wildfly-ee-galleon-pack:30.0.0.Final</pre></div></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cloud_2"><a class="anchor" href="#_cloud_2"></a><a class="link" href="#_cloud_2">2.2. cloud</a></h3>
+<h3 id="_cloud_2"><a class="anchor" href="#_cloud_2"></a><a class="link" href="#_cloud_2">3.2. cloud</a></h3>
 <div class="sect3">
-<h4 id="_supported_galleon_feature_packs_4"><a class="anchor" href="#_supported_galleon_feature_packs_4"></a><a class="link" href="#_supported_galleon_feature_packs_4">2.2.1. Supported Galleon feature-packs</a></h4>
+<h4 id="_supported_galleon_feature_packs_4"><a class="anchor" href="#_supported_galleon_feature_packs_4"></a><a class="link" href="#_supported_galleon_feature_packs_4">3.2.1. Supported Galleon feature-packs</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2418,7 +2537,7 @@ org.wildfly:wildfly-ee-galleon-pack:30.0.0.Final</pre></div></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_galleon_layers_and_associated_discovery_rules_4"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules_4"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules_4">2.2.2. <a id="glow.table.cloud"></a>Galleon layers and associated discovery rules</a></h4>
+<h4 id="_galleon_layers_and_associated_discovery_rules_4"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules_4"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules_4">3.2.2. <a id="glow.table.cloud"></a>Galleon layers and associated discovery rules</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
@@ -3080,7 +3199,7 @@ org.wildfly:wildfly-ee-galleon-pack:30.0.0.Final</pre></div></td>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0.Final<br>
-Last updated 2023-11-29 13:34:21 +0100
+Last updated 2023-11-29 14:18:42 +0100
 </div>
 </div>
 </body>

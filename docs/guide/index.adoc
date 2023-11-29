@@ -15,4 +15,7 @@ Jean-Francois Denise
 
 (C) 2023 The original authors.
 
+This documentation contains the information related to the latest WildFly version 
+set of Galleon feature-packs that link:http://docs.wildfly.org/wildfly-glow/[WildFly Glow] supports.
+
 include::featurepacks.adoc[]

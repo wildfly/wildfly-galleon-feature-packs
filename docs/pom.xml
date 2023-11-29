@@ -72,7 +72,8 @@
                 <configuration>
                     <targetDir>${basedir}/target/resources</targetDir>
                     <generatedFile>featurepacks.adoc</generatedFile>
-                    <generateRuleDescriptions>false</generateRuleDescriptions>
+                    <rulesPropertiesFile>${basedir}/rules.properties</rulesPropertiesFile>
+                    <generateRuleDescriptions>true</generateRuleDescriptions>
                     <generateKnownFeaturePacks>true</generateKnownFeaturePacks>
                     <repoPath>${basedir}/..</repoPath>
                 </configuration>
