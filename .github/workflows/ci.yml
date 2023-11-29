@@ -11,7 +11,7 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 env:
-  WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.0.0.Alpha8/wildfly-glow-1.0.0.Alpha8.zip
+  WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.0.0.Alpha9/wildfly-glow-1.0.0.Alpha9.zip
 jobs:
   build:
     name: ${{ matrix.os }}-jdk${{ matrix.java }}
