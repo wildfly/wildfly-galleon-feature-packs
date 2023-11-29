@@ -78,6 +78,12 @@ To retrieve the `[expected discovered layers]`:
 * Run `JAVA_OPTS=-Dcompact=true <wildfly-glow-unzipped-directory>/wildfly-glow scan <path to your war file>`.
 * If what WildFly Glow has discovered is what you are expecting, replace `[expected discovered layers]` with the printed output.
 
+## Update documentation
+
+* `cd docs; mvn clean package`
+* The file `docs/index.html` should have been updated with your feature-pack.
+* Commit the `docs/index.html` file.
+
 ## Open a PR against the `release` branch
 
 In the description section, please add some information to help reviewers understand what this Galleon feature-pack is about.
