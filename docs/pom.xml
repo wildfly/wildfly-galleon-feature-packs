@@ -30,7 +30,7 @@
     <properties>
         <ec2-pub-ip-dash>1-2-3-4</ec2-pub-ip-dash>
         <ec2-pub-ip>1.2.3.4</ec2-pub-ip>
-        <version.org.wildfly.glow>1.0.0.Alpha9</version.org.wildfly.glow>
+        <version.org.wildfly.glow>1.0.0.Beta6</version.org.wildfly.glow>
         <version.org.asciidoctor>2.0.0</version.org.asciidoctor>
     </properties>
   
