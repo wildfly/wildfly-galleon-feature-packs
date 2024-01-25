@@ -39,11 +39,11 @@ if [ ! -z "$preview" ]; then
 fi
 if [ ! -z $GENERATE_CONFIG ]; then
  echo "java -jar -Dverbose=true $JAVA_OPTS $jar scan $warFile ${provisioningFile} $profile $addOns $preview"
- java -jar -Dverbose=true $JAVA_OPTS $jar scan $warFile ${provisioningFile} $profile $addOns $preview
+ java -Dverbose=true $JAVA_OPTS -jar $jar scan $warFile ${provisioningFile} $profile $addOns $preview
 else
 
   if [ "$DEBUG" = 1 ]; then
-    echo "java $compact $JAVA_OPTS -jar $jar scan $warFile ${provisioningFile} $profile $addOns $context $preview"
+    echo "java $JAVA_OPTS $compact -jar $jar scan $warFile ${provisioningFile} $profile $addOns $context $preview"
   fi
 
   found_layers=$(java $JAVA_OPTS $compact  -jar $jar scan \
@@ -63,7 +63,7 @@ fi
 
 echo "* Show configuration"
 
-java -jar $jar show-configuration
+java $JAVA_OPTS -jar $jar show-configuration
 
 if [ $? -ne 0 ]; then
     echo "Error, check log"
@@ -72,7 +72,7 @@ fi
 
 echo "* Show configuration cloud"
 
-java -jar $jar show-configuration --cloud
+java $JAVA_OPTS -jar $jar show-configuration --cloud
 
 if [ $? -ne 0 ]; then
     echo "Error, check log"
