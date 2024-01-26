@@ -58,6 +58,34 @@ else
     echo "ERROR $warFile, found layers $found_layers; expected $expected"
     test_failure=1
   fi
+  # Check provisioning
+  echo "Testing SERVER provisioning"
+  java $JAVA_OPTS $compact  -jar $jar scan \
+  $warFile \
+  ${provisioningFile} \
+  $profile \
+  $addOns \
+  $context \
+  $preview --provision=SERVER
+  if [ $? -ne 0 ]; then
+    echo "ERROR SERVER provisioning $warFile"
+    test_failure=1
+  fi
+
+  if [ -z "$context" ]; then
+  echo "\nTesting BOOTABLE_JAR provisioning"
+  java $JAVA_OPTS $compact  -jar $jar scan \
+  $warFile \
+  ${provisioningFile} \
+  $profile \
+  $addOns \
+  $context \
+  $preview --provision=BOOTABLE_JAR
+  if [ $? -ne 0 ]; then
+    echo "ERROR BOOTABLE_JAR provisioning $warFile"
+    test_failure=1
+  fi
+  fi
 fi
 }
 
