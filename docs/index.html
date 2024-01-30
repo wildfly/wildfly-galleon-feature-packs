@@ -444,7 +444,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Jean-Francois Denise</span><br>
 <span id="revnumber">version 1.0.0.Final,</span>
-<span id="revdate">2024-01-25T11:33:21Z</span>
+<span id="revdate">2024-01-30T14:48:47Z</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -452,14 +452,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_rules_descriptions">1. Rules descriptions</a></li>
 <li><a href="#_support_for_wildfly_31_0_0_final">2. Support for WildFly 31.0.0.Final</a>
 <ul class="sectlevel2">
-<li><a href="#_bare_metal">2.1. bare-metal</a></li>
-<li><a href="#_cloud">2.2. cloud</a></li>
+<li><a href="#_bare_metal">2.1. bare-metal</a>
+<ul class="sectlevel3">
+<li><a href="#_supported_galleon_feature_packs">2.1.1. Supported Galleon feature-packs</a></li>
+<li><a href="#_galleon_layers_and_associated_discovery_rules">2.1.2. Galleon layers and associated discovery rules</a></li>
+<li><a href="#_add_ons">2.1.3. Add-ons</a></li>
+</ul>
+</li>
+<li><a href="#_cloud">2.2. cloud</a>
+<ul class="sectlevel3">
+<li><a href="#_supported_galleon_feature_packs_2">2.2.1. Supported Galleon feature-packs</a></li>
+<li><a href="#_galleon_layers_and_associated_discovery_rules_2">2.2.2. Galleon layers and associated discovery rules</a></li>
+<li><a href="#_add_ons_2">2.2.3. Add-ons</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_support_for_wildfly_preview_31_0_0_final">3. Support for WildFly Preview 31.0.0.Final</a>
 <ul class="sectlevel2">
-<li><a href="#_bare_metal_2">3.1. bare-metal</a></li>
-<li><a href="#_cloud_2">3.2. cloud</a></li>
+<li><a href="#_bare_metal_2">3.1. bare-metal</a>
+<ul class="sectlevel3">
+<li><a href="#_supported_galleon_feature_packs_3">3.1.1. Supported Galleon feature-packs</a></li>
+<li><a href="#_galleon_layers_and_associated_discovery_rules_3">3.1.2. Galleon layers and associated discovery rules</a></li>
+<li><a href="#_add_ons_3">3.1.3. Add-ons</a></li>
+</ul>
+</li>
+<li><a href="#_cloud_2">3.2. cloud</a>
+<ul class="sectlevel3">
+<li><a href="#_supported_galleon_feature_packs_4">3.2.1. Supported Galleon feature-packs</a></li>
+<li><a href="#_galleon_layers_and_associated_discovery_rules_4">3.2.2. Galleon layers and associated discovery rules</a></li>
+<li><a href="#_add_ons_4">3.2.3. Add-ons</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -610,7 +634,7 @@ set of Galleon feature-packs that <a href="http://docs.wildfly.org/wildfly-glow/
 <p>org.keycloak:keycloak-saml-adapter-galleon-pack:23.0.0</p>
 </li>
 <li>
-<p>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.2.Final</p>
+<p>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.3.Final</p>
 </li>
 <li>
 <p>org.wildfly:wildfly-myfaces-feature-pack:2.0.0.Final</p>
@@ -741,8 +765,9 @@ set of Galleon feature-packs that <a href="http://docs.wildfly.org/wildfly-glow/
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">grpc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=rpc,grpc<br>
-<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=none<br></p></td>
-<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.2.Final</pre></div></td>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=none<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Support for gRPC.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.3.Final</pre></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">h2-datasource</p></td>
@@ -1231,6 +1256,188 @@ org.wildfly:wildfly-galleon-pack:31.0.0.Final</pre></div></td>
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_add_ons"><a class="anchor" href="#_add_ons"></a><a class="link" href="#_add_ons">2.1.3. <a id="glow.table.addons.bare-metal"></a>Add-ons</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add-on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amqp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reactive-messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the MicroProfile Reactive Messaging AMQP connector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">embedded-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an embedded Apache Activemq Artemis Jakarta Messaging broker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for gRPC.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h2-database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an H2 datasource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h2-database:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an H2 datasource set as the ee subsystem default datasource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hal-web-console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Management Web console. Make sure to add an initial user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">health</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for runtime health checks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http-invoker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ejb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for invoking Jakarta Enterprise Beans over HTTP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iiop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for IIOP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">infinispan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings in infinispan caches.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jdr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the JBoss Diagnostic Reporting (JDR).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jgroups-aws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings in JBoss Modules modules required to configure the 'aws.S3_PING' discovery protocol.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kafka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reactive-messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the MicroProfile Reactive Messaging Kafka connector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">load-balancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for Undertow configured as a load balancer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lra-coordinator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lra</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MicroProfile LRA Coordinator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mariadb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mariadb:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">metrics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for base metrics from the WildFly Management Model and JVM MBeans.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">micrometer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for Micrometer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mod_cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for mod_cluster integration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mssqlserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mssqlserver:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">myfaces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MyFaces.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openapi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MicroProfile OpenAPI.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oracle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oracle:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postgresql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postgresql:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remote-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for connections to a remote Apache Activemq Artemis Jakarta Messaging broker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ssl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">security</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the Undertow HTTPS listener.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wildfly-cli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Server command line tools: jboss-cli, add-user, elytron-tool.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_cloud"><a class="anchor" href="#_cloud"></a><a class="link" href="#_cloud">2.2. cloud</a></h3>
@@ -1251,7 +1458,7 @@ org.wildfly:wildfly-galleon-pack:31.0.0.Final</pre></div></td>
 <p>org.keycloak:keycloak-saml-adapter-galleon-pack:23.0.0</p>
 </li>
 <li>
-<p>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.2.Final</p>
+<p>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.3.Final</p>
 </li>
 <li>
 <p>org.wildfly:wildfly-myfaces-feature-pack:2.0.0.Final</p>
@@ -1417,8 +1624,9 @@ org.wildfly.cloud:wildfly-cloud-galleon-pack:6.0.0.Final</pre></div></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">grpc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=rpc,grpc<br>
-<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=none<br></p></td>
-<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.2.Final</pre></div></td>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=none<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Support for gRPC.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.3.Final</pre></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">h2-datasource</p></td>
@@ -1943,6 +2151,193 @@ org.wildfly.cloud:wildfly-cloud-galleon-pack:6.0.0.Final</pre></div></td>
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_add_ons_2"><a class="anchor" href="#_add_ons_2"></a><a class="link" href="#_add_ons_2">2.2.3. <a id="glow.table.addons.cloud"></a>Add-ons</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add-on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amqp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reactive-messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the MicroProfile Reactive Messaging AMQP connector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cloud-remote-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure connection to a remote broker using MQ_SERVICE_PREFIX_MAPPING env variable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">embedded-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an embedded Apache Activemq Artemis Jakarta Messaging broker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for gRPC.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h2-database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an H2 datasource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h2-database:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an H2 datasource set as the ee subsystem default datasource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hal-web-console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Management Web console. Make sure to add an initial user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">health</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for runtime health checks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http-invoker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ejb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for invoking Jakarta Enterprise Beans over HTTP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iiop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for IIOP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">infinispan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings in infinispan caches.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jdr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the JBoss Diagnostic Reporting (JDR).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jgroups-aws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings in JBoss Modules modules required to configure the 'aws.S3_PING' discovery protocol.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kafka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reactive-messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the MicroProfile Reactive Messaging Kafka connector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">load-balancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for Undertow configured as a load balancer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lra-coordinator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lra</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MicroProfile LRA Coordinator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mariadb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mariadb:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">metrics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for base metrics from the WildFly Management Model and JVM MBeans.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">micrometer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for Micrometer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mod_cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for mod_cluster integration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mssqlserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mssqlserver:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">myfaces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MyFaces.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openapi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MicroProfile OpenAPI.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oracle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oracle:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postgresql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postgresql:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remote-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for connections to a remote Apache Activemq Artemis Jakarta Messaging broker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ssl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">security</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the Undertow HTTPS listener.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wildfly-cli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Server command line tools: jboss-cli, add-user, elytron-tool.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1962,7 +2357,7 @@ org.wildfly.cloud:wildfly-cloud-galleon-pack:6.0.0.Final</pre></div></td>
 <p>org.wildfly:wildfly-datasources-preview-galleon-pack:7.0.0.Final</p>
 </li>
 <li>
-<p>org.wildfly.extras.grpc:wildfly-grpc-preview-feature-pack:0.1.2.Final</p>
+<p>org.wildfly.extras.grpc:wildfly-grpc-preview-feature-pack:0.1.3.Final</p>
 </li>
 <li>
 <p>org.jboss.resteasy.spring:galleon-preview-feature-pack:3.1.1.Beta1</p>
@@ -2087,8 +2482,9 @@ org.wildfly.cloud:wildfly-cloud-galleon-pack:6.0.0.Final</pre></div></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">grpc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=rpc,grpc<br>
-<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=none<br></p></td>
-<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.2.Final</pre></div></td>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=none<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Support for gRPC.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.3.Final</pre></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">h2-datasource</p></td>
@@ -2577,6 +2973,188 @@ org.wildfly:wildfly-galleon-pack:31.0.0.Final</pre></div></td>
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_add_ons_3"><a class="anchor" href="#_add_ons_3"></a><a class="link" href="#_add_ons_3">3.1.3. <a id="glow.table.addons.bare-metal"></a>Add-ons</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add-on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amqp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reactive-messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the MicroProfile Reactive Messaging AMQP connector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">embedded-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an embedded Apache Activemq Artemis Jakarta Messaging broker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for gRPC.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h2-database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an H2 datasource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h2-database:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an H2 datasource set as the ee subsystem default datasource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hal-web-console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Management Web console. Make sure to add an initial user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">health</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for runtime health checks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http-invoker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ejb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for invoking Jakarta Enterprise Beans over HTTP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iiop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for IIOP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">infinispan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings in infinispan caches.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jdr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the JBoss Diagnostic Reporting (JDR).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jgroups-aws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings in JBoss Modules modules required to configure the 'aws.S3_PING' discovery protocol.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kafka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reactive-messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the MicroProfile Reactive Messaging Kafka connector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">load-balancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for Undertow configured as a load balancer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lra-coordinator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lra</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MicroProfile LRA Coordinator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mariadb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mariadb:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">metrics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for base metrics from the WildFly Management Model and JVM MBeans.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">micrometer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for Micrometer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mod_cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for mod_cluster integration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mssqlserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mssqlserver:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">myfaces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MyFaces.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openapi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MicroProfile OpenAPI.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oracle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oracle:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postgresql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postgresql:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remote-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for connections to a remote Apache Activemq Artemis Jakarta Messaging broker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ssl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">security</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the Undertow HTTPS listener.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wildfly-cli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Server command line tools: jboss-cli, add-user, elytron-tool.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_cloud_2"><a class="anchor" href="#_cloud_2"></a><a class="link" href="#_cloud_2">3.2. cloud</a></h3>
@@ -2594,7 +3172,7 @@ org.wildfly:wildfly-galleon-pack:31.0.0.Final</pre></div></td>
 <p>org.wildfly:wildfly-datasources-preview-galleon-pack:7.0.0.Final</p>
 </li>
 <li>
-<p>org.wildfly.extras.grpc:wildfly-grpc-preview-feature-pack:0.1.2.Final</p>
+<p>org.wildfly.extras.grpc:wildfly-grpc-preview-feature-pack:0.1.3.Final</p>
 </li>
 <li>
 <p>org.jboss.resteasy.spring:galleon-preview-feature-pack:3.1.1.Beta1</p>
@@ -2754,8 +3332,9 @@ org.wildfly.cloud:wildfly-cloud-galleon-pack:6.0.0.Final</pre></div></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">grpc</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=rpc,grpc<br>
-<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=none<br></p></td>
-<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.2.Final</pre></div></td>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=none<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Support for gRPC.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.3.Final</pre></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">h2-datasource</p></td>
@@ -3280,6 +3859,193 @@ org.wildfly.cloud:wildfly-cloud-galleon-pack:6.0.0.Final</pre></div></td>
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_add_ons_4"><a class="anchor" href="#_add_ons_4"></a><a class="link" href="#_add_ons_4">3.2.3. <a id="glow.table.addons.cloud"></a>Add-ons</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add-on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amqp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reactive-messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the MicroProfile Reactive Messaging AMQP connector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cloud-remote-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure connection to a remote broker using MQ_SERVICE_PREFIX_MAPPING env variable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">embedded-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an embedded Apache Activemq Artemis Jakarta Messaging broker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for gRPC.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h2-database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an H2 datasource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h2-database:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for an H2 datasource set as the ee subsystem default datasource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hal-web-console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Management Web console. Make sure to add an initial user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">health</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for runtime health checks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http-invoker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ejb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for invoking Jakarta Enterprise Beans over HTTP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iiop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for IIOP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">infinispan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings in infinispan caches.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jdr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the JBoss Diagnostic Reporting (JDR).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jgroups-aws</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brings in JBoss Modules modules required to configure the 'aws.S3_PING' discovery protocol.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kafka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reactive-messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the MicroProfile Reactive Messaging Kafka connector.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">load-balancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for Undertow configured as a load balancer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lra-coordinator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lra</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MicroProfile LRA Coordinator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mariadb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mariadb:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">metrics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for base metrics from the WildFly Management Model and JVM MBeans.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">micrometer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">observability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for Micrometer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mod_cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clustering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for mod_cluster integration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mssqlserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mssqlserver:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">myfaces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MyFaces.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openapi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for MicroProfile OpenAPI.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oracle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oracle:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postgresql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postgresql:default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation in <a href="https://github.com/wildfly-extras/wildfly-datasources-galleon-pack" class="bare">https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remote-activemq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for connections to a remote Apache Activemq Artemis Jakarta Messaging broker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ssl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">security</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support for the Undertow HTTPS listener.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wildfly-cli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Server command line tools: jboss-cli, add-user, elytron-tool.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -3287,7 +4053,7 @@ org.wildfly.cloud:wildfly-cloud-galleon-pack:6.0.0.Final</pre></div></td>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0.Final<br>
-Last updated 2024-01-25 12:33:22 +0100
+Last updated 2024-01-30 15:48:47 +0100
 </div>
 </div>
 </body>
