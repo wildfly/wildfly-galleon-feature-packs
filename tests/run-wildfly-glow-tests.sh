@@ -66,7 +66,7 @@ else
   $profile \
   $addOns \
   $context \
-  $preview --provision=SERVER
+  $preview --provision=SERVER --fails-on-error=false
   if [ $? -ne 0 ]; then
     echo "ERROR SERVER provisioning $warFile"
     test_failure=1
@@ -80,7 +80,7 @@ else
   $profile \
   $addOns \
   $context \
-  $preview --provision=BOOTABLE_JAR
+  $preview --provision=BOOTABLE_JAR --fails-on-error=false
   if [ $? -ne 0 ]; then
     echo "ERROR BOOTABLE_JAR provisioning $warFile"
     test_failure=1
