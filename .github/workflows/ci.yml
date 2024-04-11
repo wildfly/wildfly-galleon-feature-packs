@@ -11,7 +11,7 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 env:
-  WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.0.0.Beta7/wildfly-glow-1.0.0.Beta7.zip
+  WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.0.0.Final/wildfly-glow-1.0.0.Final.zip
 jobs:
   build:
     name: ${{ matrix.os }}-jdk${{ matrix.java }}
@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        java: ['17']
+        java: ['17', '21']
 
     steps:
       - uses: actions/checkout@v4
