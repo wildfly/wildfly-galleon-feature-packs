@@ -1,20 +1,27 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: WildFly Galleon feature-packs for Glow - CI
+name: WildFly Galleon feature-packs for Glow - PR and Nightly CI to test against WildFly SNAPSHOT build
 
 on:
+  schedule:
+    - cron: "0 0 * * *"
   pull_request:
     branches:
       - 'release'
     types: [opened, synchronize, reopened, ready_for_review]
-
 env:
   WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.0.5.Final/wildfly-glow-1.0.5.Final.zip
 jobs:
+  WildFly-build:
+    uses: wildfly/wildfly/.github/workflows/shared-wildfly-build.yml@main
+    with:
+      wildfly-branch: main
+      wildfly-repo: "wildfly/wildfly"
   build:
     name: ${{ matrix.os }}-jdk${{ matrix.java }}
     runs-on: ${{ matrix.os }}
+    needs: [WildFly-build]
     strategy:
       fail-fast: false
       matrix:
@@ -23,6 +30,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: wildfly-maven-repository
+          path: .
+      - name: Extract Maven Repo
+        shell: bash
+        run: tar -xzf wildfly-maven-repository.tar.gz -C ~
       - name: Download wildfly-glow
         run: |
           wget ${{ env.WILDFLY_GLOW }}
@@ -35,5 +49,8 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
       - name: Test
-        run: bash tests/run-wildfly-glow-tests.sh
+        run: |
+          snapshotDir=$(find . -type d -iname "*-SNAPSHOT")
+          version=$(basename -a $snapshotDir)
+          bash tests/run-wildfly-glow-tests.sh $version
         shell: bash

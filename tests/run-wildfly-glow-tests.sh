@@ -1,5 +1,9 @@
 #!/bin/bash
 
+serverVersion=$1
+if [ ! -z "$serverVersion" ]; then
+  serverVersionOption="--server-version=$serverVersion";
+fi
 script_dir=$(dirname "$0")
 jar="$WILDFLY_GLOW_DIR/wildfly-glow.jar"
 compact=-Dcompact=true
@@ -38,12 +42,12 @@ if [ ! -z "$preview" ]; then
   preview="--wildfly-preview";
 fi
 if [ ! -z $GENERATE_CONFIG ]; then
- echo "java -jar -Dverbose=true $JAVA_OPTS $jar scan $warFile ${provisioningFile} $profile $addOns $preview"
- java -Dverbose=true $JAVA_OPTS -jar $jar scan $warFile ${provisioningFile} $profile $addOns $preview
+ echo "java -jar -Dverbose=true $JAVA_OPTS $jar scan $warFile ${provisioningFile} $profile $addOns $preview $serverVersionOption"
+ java -Dverbose=true $JAVA_OPTS -jar $jar scan $warFile ${provisioningFile} $profile $addOns $preview $serverVersionOption
 else
 
   if [ "$DEBUG" = 1 ]; then
-    echo "java $JAVA_OPTS $compact -jar $jar scan $warFile ${provisioningFile} $profile $addOns $context $preview"
+    echo "java $JAVA_OPTS $compact -jar $jar scan $warFile ${provisioningFile} $profile $addOns $context $preview $serverVersionOption"
   fi
 
   found_layers=$(java $JAVA_OPTS $compact  -jar $jar scan \
@@ -52,7 +56,8 @@ else
   $profile \
   $addOns \
   $context \
-  $preview)
+  $preview \
+  $serverVersionOption)
 
   if [ "$found_layers" != "$expected" ]; then
     echo "ERROR $warFile, found layers $found_layers; expected $expected"
@@ -66,7 +71,8 @@ else
   $profile \
   $addOns \
   $context \
-  $preview --provision=SERVER --fails-on-error=false
+  $preview --provision=SERVER --fails-on-error=false \
+  $serverVersionOption
   if [ $? -ne 0 ]; then
     echo "ERROR SERVER provisioning $warFile"
     test_failure=1
@@ -80,7 +86,8 @@ else
   $profile \
   $addOns \
   $context \
-  $preview --provision=BOOTABLE_JAR --fails-on-error=false
+  $preview --provision=BOOTABLE_JAR --fails-on-error=false \
+  $serverVersionOption
   if [ $? -ne 0 ]; then
     echo "ERROR BOOTABLE_JAR provisioning $warFile"
     test_failure=1
@@ -91,7 +98,7 @@ fi
 
 echo "* Show configuration"
 
-java $JAVA_OPTS -jar $jar show-configuration
+java $JAVA_OPTS -jar $jar show-configuration $serverVersionOption
 
 if [ $? -ne 0 ]; then
     echo "Error, check log"
@@ -100,7 +107,7 @@ fi
 
 echo "* Show configuration cloud"
 
-java $JAVA_OPTS -jar $jar show-configuration --cloud
+java $JAVA_OPTS -jar $jar show-configuration --cloud $serverVersionOption
 
 if [ $? -ne 0 ]; then
     echo "Error, check log"
