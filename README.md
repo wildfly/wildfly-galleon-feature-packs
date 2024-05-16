@@ -25,11 +25,21 @@ This repository contains the following branchs:
 
 * `release`: This branch contains only released versions of Galleon feature-packs.
 
+# Steps to follow when a new WildFly version has been released
+
+The steps to follow are documented in [this](release_process.md) document.
 
 # Relationship with WildFly Glow
 
 The [WildFly Glow](https://github.com/wildfly/wildfly-glow) tooling relies on this repository to discover the set of Galleon 
-feature-packs to use according to the chosen execution context.
+feature-packs to use according to the chosen execution context. The `release` branch is used by WildFly Glow to resolve feature-packs.
+
+WildFly Glow CLI and WildFly Glow integration in WildFly Maven Plugin use the `https://raw.githubusercontent.com/wildfly/wildfly-galleon-feature-packs/release/` branch to resolve feature-packs
+
+# Relationship with WildFly Quickstarts when testing with Wildfly SNAPSHOT builds
+
+The WildFly quickstarts github actions run tests with WildFly SNAPSHOT. In such a case, the system property 
+`-Dwildfly-glow-galleon-feature-packs-url=https://raw.githubusercontent.com/wildfly/wildfly-galleon-feature-packs/main/` has to be provided to resolve SNAPSHOT WildFly feature-packs
 
 
 # Adding extra feature-packs to the repository
@@ -83,6 +93,8 @@ To retrieve the `[expected discovered layers]`:
 * `cd docs; mvn clean package`
 * The file `docs/index.html` should have been updated with your feature-pack.
 * Commit the `docs/index.html` file.
+
+* Update the tables located in the file `extra-feature-packs.md` with your feature-pack and URL to its github project.
 
 ## Open a PR against the `release` branch
 

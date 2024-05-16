@@ -6,12 +6,14 @@ name: WildFly Galleon feature-packs for Glow - CI
 on:
   push:
     branches:
-      - '**'
+      - 'release'
   pull_request:
+    branches:
+      - 'release'
     types: [opened, synchronize, reopened, ready_for_review]
 
 env:
-  WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.0.0.Final/wildfly-glow-1.0.0.Final.zip
+  WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.0.5.Final/wildfly-glow-1.0.5.Final.zip
 jobs:
   build:
     name: ${{ matrix.os }}-jdk${{ matrix.java }}
