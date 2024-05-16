@@ -1,0 +1,11 @@
+War original projects
+
+* quickstart-graphql.war: https://github.com/wildfly-extras/wildfly-graphql-feature-pack/tree/main/quickstart
+
+* spring-resteasy.war: https://github.com/wildfly/quickstart/tree/main/spring-resteasy
+
+* todo-backend.war: https://github.com/wildfly/quickstart/tree/main/todo-backend
+
+* servlet-saml-service-provider.war: https://github.com/keycloak/keycloak-quickstarts/tree/latest/jakarta/servlet-saml-service-provider
+
+* saml-app-auto-reg.war: https://github.com/wildfly/wildfly-s2i/tree/main/examples/saml-auto-reg
