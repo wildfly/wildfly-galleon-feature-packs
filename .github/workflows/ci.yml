@@ -35,5 +35,13 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
       - name: Test
-        run: bash tests/run-wildfly-glow-tests.sh
+        run: |
+          # Retrieve the last published WildFly release to test with
+          array=(`ls -d *.Final/ *.Beta?/ | sort -n`)
+          array_size=${#array[@]}
+          last_index=$(( array_size-1))
+          latestDir=${array[$last_index]}
+          version=$(basename -a $latestDir)
+          echo "Testing with WildFly version $version"
+          bash tests/run-wildfly-glow-tests.sh $version
         shell: bash
