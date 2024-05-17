@@ -1,71 +1,39 @@
 # Steps to follow when a new WildFly version has been released
 
-## 1) In the release branch
+When a new WildFly version is released, we need to add content for the version to be discovered by WildFly Glow. 
+We are also preparing a new SNAPSHOT version (if needed). It all depends on the nature of the release (Beta, Final and Micro).
 
-This branch is consumed by WildFly Glow tooling.
+The steps detailed here are fully automated in the script `add-wildfly-release.sh <new release version>` that you should execute to create a new release. 
 
-* Checkout the release branch
+## Steps for Beta releases: 
 
-### Reference the new version, applies to Major, Micro and Beta
+* Add a new directory for the new WildFly version by copying the latest *.Beta1-SNAPSHOT directory and replacing the versions with the new released Beta version.
+* Create the next *.Final-SNAPSHOT directory by copying the newly created directory and replacing the versions with the next *.Final-SNAPSHOT version.
+* Remove the previous *.Beta1-SNAPSHOT directory
+* Remove the  previous *.Beta1-SNAPSHOT from the list of releases in the `versions.yaml` file, field `versions`.
+* Add the new Beta release to the list of releases in the `versions.yaml` file, field `versions`.
+* Add the new Final-SNAPSHOT release to the list of releases in the `versions.yaml` file, field `versions`.
+* Check that this project [Issues](https://github.com/wildfly/wildfly-galleon-feature-packs/issues) 
+don't contain issues that would imply to upgrade extra feature-packs for this new release. If that is the case, update them manually in both the new
+Beta and Final-SNAPSHOT files.
+* Review your changes, commit and open PR against the release branch
 
-* Copy the latest WildFly version directory (e.g.: `32.0.0.Final`) and rename it to the new released version (e.g.: 33.0.0.Beta1)
-* In all the xml files located in the copied directory: `provisioning-bare-metal.xml`, `provisioning-cloud.xml`, 
-`tech-preview/provisioning-bare-metal.xml`, `tech-preview/provisioning-cloud.xml`:
-  - Replace the WildFly feature-packs (org.wildfly:wildfly-galleon-pack and org.wildfly:wildfly-preview-feature-pack) versions with the new version.
-  - If [Issues](https://github.com/wildfly/wildfly-galleon-feature-packs/issues) exist in the project that require upgrades for the other referenced feature-packs, update them. The list of extra feature-packs repositories is [there](extra-feature-packs.md).
-* Add all new files, commit the changes. Keep the commit hash, it will be cherry-picked in the main branch in a following step
+## Steps for Final releases: 
 
-### Update the latest version, applies to Major and Micro ONLY
+* Add a new directory for the new WildFly version by copying the latest *.Final-SNAPSHOT directory and replacing the versions with the new released Final version.
+* Create the next Major+1.0.0.Beta1-SNAPSHOT directory by copying the newly created directory and replacing the versions with the next Major+1.0.0.Beta1-SNAPSHOT version.
+* Remove the previous *.Final-SNAPSHOT directory
+* Remove the previous *.Final-SNAPSHOT from the list of releases in the `versions.yaml` file, field `versions`.
+* Add the new *.Final release to the list of releases in the `versions.yaml` file, field `versions`.
+* Add the new Major+1.0.0.Beta1-SNAPSHOT release to the list of releases in the `versions.yaml` file, field `versions`.
+* Replace the current latest with the new *.Final release in the `versions.yaml` file, field latest.
+* Generate documentation: `cd docs; mvn clean install`
+* Review your changes, commit and open PR against the release branch
 
-* Edit the file `versions.yaml`
-* `latest` field value must be replaced with the new WildFly release.
+## Steps for Micro releases: 
 
-### Add the version to the list of known versions, applies to Major, Micro and Beta
-
-* Edit the file `versions.yaml`
-* Add the new released version at the end of the list of versions, field `versions`. The newly added version must be separated with a comma.
-
-### Update the documentation, applies to Major and Micro ONLY
-
-* cd docs.
-* mvn clean install
-* The `index.html` file is updated with the latest WildFly version.
-
-### Publish the changes
-
-* Add updated files, commit the changes, open a new PR, CI will run, merge
-
-At this point, the doc will be published and WildFly Glow users will have access to the new WildFly release.
-
-## 2) In the main branch
-
-This branch is consumed by the WildFly Quickstart CI job main branch when testing with WildFly SNAPSHOT
-
-### Reference the new version and new SNAPSHOT version, applies to Major, Micro and Beta
-
-* Checkout the main branch
-* Delete the latest WildFly SNAPSHOT directory (eg: 33.0.0.Beta1-SNAPSHOT). We just keep a single SNAPSHOT that we are going to create.
-* Cherry-pick the commit that you previously stored. It will create the new WildFly version directory (eg: 33.0.0.Beta1)
-* Copy this directory and rename it to the new WildFly SNAPSHOT version (eg: 33.0.0.Final-SNAPSHOT)
-* In all the xml files located in the copied directory: `provisioning-bare-metal.xml`, `provisioning-cloud.xml`, 
-`tech-preview/provisioning-bare-metal.xml`, `tech-preview/provisioning-cloud.xml`:
-  - Replace the WildFly feature-packs (org.wildfly:wildfly-galleon-pack and org.wildfly:wildfly-preview-feature-pack) versions with the new SNAPSHOT version.
-
-### Update the latest version, applies to Major, Micro and Beta
-
-* Edit the file `versions.yaml`
-* `latest` field value must be replaced with the new SNAPSHOT WildFly release.
-
-### Add the version to the list of known versions, applies to Major, Micro and Beta
-
-* Edit the file `versions.yaml`
-* Remove the latest WildFly SNAPSHOT version (eg: 33.0.0.Beta1-SNAPSHOT) from the `versions` field.
-* Add the new released version and the new SNAPSHOT version at the end of the list of versions, field `versions`. 
-The newly added versions must be separated with a comma. For example: `33.0.0.Beta1, 33.0.0.Final-SNAPSHOT`.
-
-### Publish the changes
-
-* Add updated files, commit the changes, open a new PR, merge
-
-At this point, the Quickstart CI will be able to run with the new SNAPSHOT build of WildFly.
-
+* Add a new directory for the new WildFly version by copying the latest Major.Minor.Micro-1.Final directory and replacing the versions with the new released Micro version.
+* Add the new *.Final release to the list of releases in the `versions.yaml` file, field `versions`.
+* Replace the current latest with the new *.Final release in the `versions.yaml` file, field latest.
+* Generate documentation: `cd docs; mvn clean install`
+* Review your changes, commit and open PR against the release branch

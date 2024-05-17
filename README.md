@@ -16,15 +16,6 @@ The file `versions.yaml` contains some metadata allowing to discover the content
 
 * `versions`: Comma separated list of WildFly versions that this repository contains.
 
-
-# Repository branchs
-
-This repository contains the following branchs:
-
-* `main`: This branch can contain SNAPSHOT Galleon feature-packs. The latest version in this branch is the current WildFly SNAPSHOT. Using this branch implies having a local build of WildFly `main` branch.
-
-* `release`: This branch contains only released versions of Galleon feature-packs.
-
 # Steps to follow when a new WildFly version has been released
 
 The steps to follow are documented in [this](release_process.md) document.
@@ -35,12 +26,6 @@ The [WildFly Glow](https://github.com/wildfly/wildfly-glow) tooling relies on th
 feature-packs to use according to the chosen execution context. The `release` branch is used by WildFly Glow to resolve feature-packs.
 
 WildFly Glow CLI and WildFly Glow integration in WildFly Maven Plugin use the `https://raw.githubusercontent.com/wildfly/wildfly-galleon-feature-packs/release/` branch to resolve feature-packs
-
-# Relationship with WildFly Quickstarts when testing with Wildfly SNAPSHOT builds
-
-The WildFly quickstarts github actions run tests with WildFly SNAPSHOT. In such a case, the system property 
-`-Dwildfly-glow-galleon-feature-packs-url=https://raw.githubusercontent.com/wildfly/wildfly-galleon-feature-packs/main/` has to be provided to resolve SNAPSHOT WildFly feature-packs
-
 
 # Adding extra feature-packs to the repository
 
