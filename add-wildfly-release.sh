@@ -32,60 +32,75 @@ if [ -d $newVersion ]; then
   exit 1
 fi
 
-if [ ! $micro = '0' ]; then
-  previousMicro=$((micro - 1))
-  previousVersion=$major.$minor.$previousMicro.$stability
+# When adding a SNAPSHOT prior to have the next Final release released (due to some delay in releasing the Final).
+if [[ "$stability" =~ "SNAPSHOT" ]]; then
+    snapshotDir=$(find . -type d -iname "*-SNAPSHOT")
+    previousVersion=$(basename -a $snapshotDir)
+    nextVersion=$newVersion
+    echo "Adding a new SNAPSHOT $newVersion from the previous $previousVersion"
+    createNewVersionDirectory $previousVersion $newVersion
 else
-  previousVersion=$(basename -a $newVersion-SNAPSHOT)
-  deletePrevious=${previousVersion}
-fi
-
-if [ ! -d $previousVersion ]; then
-  echo "No $previousVersion WildFly version directory found for $newVersion"
-  exit 1
-fi
-
-createNewVersionDirectory $previousVersion $newVersion
-
-if [ "$micro" = "0" ]; then
-  if [ "$stability" = "Final" ]; then
-    nextMajor=$((major + 1))
-    nextVersion=$nextMajor.0.0.Beta1
-  else
-    if [[ "$stability" =~ "Beta" ]]; then
-      nextVersion=$major.$minor.$micro.Final 
+    if [ ! $micro = '0' ]; then
+      previousMicro=$((micro - 1))
+      previousVersion=$major.$minor.$previousMicro.$stability
     else
-      echo Unknown kind of version $newversion
+      previousVersion=$(basename -a $newVersion-SNAPSHOT)
+      deletePrevious=${previousVersion}
+    fi
+
+    if [ ! -d $previousVersion ]; then
+      echo "No $previousVersion WildFly version directory found for $newVersion"
       exit 1
     fi
-  fi
-  # Create the new SNAPSHOT
-  nextVersion=$nextVersion-SNAPSHOT
-  createNewVersionDirectory $newVersion $nextVersion
-fi
 
-if [ ! -z $deletePrevious ]; then
-  echo "Deleting $deletePrevious WildFly version directory"
-  rm -rf $deletePrevious
-fi
+    createNewVersionDirectory $previousVersion $newVersion
 
-if [ "$stability" = "Final" ]; then
-  # update latest
-  echo "versions.yaml file: updating the latest version to ${newVersion} version"
-  sed -i "/^latest: /clatest: ${newVersion}" "versions.yaml"
-fi
+    if [ "$micro" = "0" ]; then
+      if [ "$stability" = "Final" ]; then
+        nextMajor=$((major + 1))
+        nextVersion=$nextMajor.0.0.Beta1
+      else
+        if [[ "$stability" =~ "Beta" ]]; then
+          nextVersion=$major.$minor.$micro.Final 
+        else
+          echo Unknown kind of version $newversion
+          exit 1
+        fi
+      fi
+      # Create the new SNAPSHOT if it doesn't already exist
+      nextSnapshot=$(basename -a $nextVersion-SNAPSHOT)
+      if [ ! -d $nextSnapshot ]; then
+        nextVersion=$nextVersion-SNAPSHOT
+        createNewVersionDirectory $newVersion $nextVersion
+      else
+        echo "New SNAPSHOT version $nextVersion-SNAPSHOT already exists."
+        nextVersion=
+      fi
+    fi
 
-# add the new version
-echo "versions.yaml file: adding ${newVersion} version"
-sed -i "/^versions=*/s/$/, ${newVersion}/" versions.yaml
+    if [ ! -z $deletePrevious ]; then
+      echo "Deleting $deletePrevious WildFly version directory"
+      rm -rf $deletePrevious
+    fi
 
-if [ "$stability" = "Final" ]; then
-  echo "Generating documentation..."
-  # generate doc
-  cd docs
-  mvn clean install
-  cd ..
-  echo "Documentation has been generated in docs/index.html"
+    if [ "$stability" = "Final" ]; then
+      # update latest
+      echo "versions.yaml file: updating the latest version to ${newVersion} version"
+      sed -i "/^latest: /clatest: ${newVersion}" "versions.yaml"
+    fi
+
+    # add the new version
+    echo "versions.yaml file: adding ${newVersion} version"
+    sed -i "/^versions=*/s/$/, ${newVersion}/" versions.yaml
+
+    if [ "$stability" = "Final" ]; then
+      echo "Generating documentation..."
+      # generate doc
+      cd docs
+      mvn clean install
+      cd ..
+      echo "Documentation has been generated in docs/index.html"
+    fi
 fi
 
 # Remove the current snapshot and add the new snapshot only if a new snapshot has been created
