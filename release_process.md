@@ -37,3 +37,11 @@ Beta and Final-SNAPSHOT files.
 * Replace the current latest with the new *.Final release in the `versions.yaml` file, field latest.
 * Generate documentation: `cd docs; mvn clean install`
 * Review your changes, commit and open PR against the release branch
+
+## Steps for adding a SNAPSHOT. 
+
+Can occur if the main wildfly branch is updated to the new SNAPSHOT although the release is not yet ready (delay). This is required
+to have the nightly SNAPSHOT CI to succeed.
+
+* Add a new directory for the new SNAPSHOT WildFly version by copying the latest *.*-SNAPSHOT directory and replacing the versions with the X.X.X.[Beta1 | Final]-SNAPSHOT version.
+

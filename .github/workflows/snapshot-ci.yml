@@ -51,7 +51,8 @@ jobs:
       - name: Test
         run: |
           # Retrieve the current SNAPSHOT version
-          snapshotDir=$(find . -type d -iname "*-SNAPSHOT")
+          # We have a time window where we can have 2 (during a release process), use the latest one.
+          snapshotDir=$(find . -type d -iname "*-SNAPSHOT" | sort -r | head -1)
           version=$(basename -a $snapshotDir)
           echo "Testing with WildFly version $version"
           bash tests/run-wildfly-glow-tests.sh $version
