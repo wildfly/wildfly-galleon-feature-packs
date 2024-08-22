@@ -1,1 +1,4 @@
 /docs/target/
+
+# Igore IDEA files
+.idea
