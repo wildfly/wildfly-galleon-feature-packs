@@ -40,13 +40,8 @@ if [[ "$stability" =~ "SNAPSHOT" ]]; then
     echo "Adding a new SNAPSHOT $newVersion from the previous $previousVersion"
     createNewVersionDirectory $previousVersion $newVersion
 else
-    if [ ! $micro = '0' ]; then
-      previousMicro=$((micro - 1))
-      previousVersion=$major.$minor.$previousMicro.$stability
-    else
-      previousVersion=$(basename -a $newVersion-SNAPSHOT)
-      deletePrevious=${previousVersion}
-    fi
+    previousVersion=$(basename -a $newVersion-SNAPSHOT)
+    deletePrevious=${previousVersion}
 
     if [ ! -d $previousVersion ]; then
       echo "No $previousVersion WildFly version directory found for $newVersion"
@@ -59,6 +54,10 @@ else
       if [ "$stability" = "Final" ]; then
         nextMajor=$((major + 1))
         nextVersion=$nextMajor.0.0.Beta1
+        # Must delete the latest previous Major micro SNAPSHOT
+        previousMajor=$((major - 1))
+        microSnapshotDir=$(find . -type d -iname "$previousMajor.0.*-SNAPSHOT")
+        previousMicroSnapshotVersion=$(basename -a $microSnapshotDir)
       else
         if [[ "$stability" =~ "Beta" ]]; then
           nextVersion=$major.$minor.$micro.Final 
@@ -76,11 +75,27 @@ else
         echo "New SNAPSHOT version $nextVersion-SNAPSHOT already exists."
         nextVersion=
       fi
+    else
+      nextMicro=$((micro + 1))
+      nextVersion=$major.$minor.$nextMicro.$stability
+      nextSnapshot=$(basename -a $nextVersion-SNAPSHOT)
+      # Create the new SNAPSHOT if it doesn't already exist
+      if [ ! -d $nextSnapshot ]; then
+        nextVersion=$nextVersion-SNAPSHOT
+        createNewVersionDirectory $newVersion $nextVersion
+      else
+        echo "New SNAPSHOT version $nextVersion-SNAPSHOT already exists."
+        nextVersion=
+      fi
     fi
 
     if [ ! -z $deletePrevious ]; then
       echo "Deleting $deletePrevious WildFly version directory"
       rm -rf $deletePrevious
+    fi
+    if [ ! -z $previousMicroSnapshotVersion ]; then
+      echo "Deleting $previousMicroSnapshotVersion WildFly version directory"
+      rm -rf $previousMicroSnapshotVersion
     fi
 
     if [ "$stability" = "Final" ]; then
@@ -109,6 +124,12 @@ if [ ! -z ${nextVersion} ]; then
  echo "versions.yaml file: adding ${nextVersion} version"
  sed -i "s|, ${previousVersion}||" versions.yaml
  sed -i "/^versions=*/s/$/, ${nextVersion}/" versions.yaml
+fi
+
+# Remove the latest micro snapshot
+if [ ! -z ${previousMicroSnapshotVersion} ]; then
+ echo "versions.yaml file: removing ${previousMicroSnapshotVersion} version"
+ sed -i "s|, ${previousMicroSnapshotVersion}||" versions.yaml
 fi
 
 echo "DONE!"

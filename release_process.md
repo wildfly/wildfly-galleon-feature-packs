@@ -32,8 +32,10 @@ Beta and Final-SNAPSHOT files.
 
 ## Steps for Micro releases: 
 
-* Add a new directory for the new WildFly version by copying the latest Major.Minor.Micro-1.Final directory and replacing the versions with the new released Micro version.
+* Add a new directory for the new WildFly version by copying the latest Major.Minor.Micro.Final-SNAPSHOT directory and replacing the versions with the new released Micro version.
 * Add the new *.Final release to the list of releases in the `versions.yaml` file, field `versions`.
+* Remove the previous Major.Minor.Micro.Final-SNAPSHOT directory
+* Remove the previous Major.Minor.Micro.Final-SNAPSHOT from the list of releases in the `versions.yaml` file, field `versions`.
 * Replace the current latest with the new *.Final release in the `versions.yaml` file, field latest.
 * Generate documentation: `cd docs; mvn clean install`
 * Review your changes, commit and open PR against the release branch
