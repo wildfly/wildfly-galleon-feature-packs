@@ -58,6 +58,11 @@ else
         previousMajor=$((major - 1))
         microSnapshotDir=$(find . -type d -iname "$previousMajor.0.*-SNAPSHOT")
         previousMicroSnapshotVersion=$(basename -a $microSnapshotDir)
+        nextMicroSnapshot=$major.$minor.1.$stability-SNAPSHOT
+        echo Creating the next micro SNAPSHOT release $nextMicroSnapshot
+        createNewVersionDirectory $newVersion $nextMicroSnapshot
+        echo "versions.yaml file: adding ${newVersion} version"
+        sed -i "/^versions=*/s/$/, ${nextMicroSnapshot}/" versions.yaml
       else
         if [[ "$stability" =~ "Beta" ]]; then
           nextVersion=$major.$minor.$micro.Final 
