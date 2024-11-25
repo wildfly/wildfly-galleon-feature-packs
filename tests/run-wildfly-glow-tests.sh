@@ -20,6 +20,7 @@ function test {
   addOns=$5
   context=$6
   preview=$7
+  spaces=$8
   test_count=$((test_count+1))
 
 if [ ! -z "$provisioningFile" ]; then
@@ -41,13 +42,16 @@ fi
 if [ ! -z "$preview" ]; then
   preview="--wildfly-preview";
 fi
+if [ ! -z "$spaces" ]; then
+  spaces="--spaces=$spaces";
+fi
 if [ ! -z $GENERATE_CONFIG ]; then
- echo "java -jar -Dverbose=true $JAVA_OPTS $jar scan $warFile ${provisioningFile} $profile $addOns $preview $serverVersionOption"
- java -Dverbose=true $JAVA_OPTS -jar $jar scan $warFile ${provisioningFile} $profile $addOns $preview $serverVersionOption
+ echo "java -jar -Dverbose=true $JAVA_OPTS $jar scan $warFile ${provisioningFile} $profile $addOns $preview $serverVersionOption $spaces"
+ java -Dverbose=true $JAVA_OPTS -jar $jar scan $warFile ${provisioningFile} $profile $addOns $preview $serverVersionOption $spaces
 else
 
   if [ "$DEBUG" = 1 ]; then
-    echo "java $JAVA_OPTS $compact -jar $jar scan $warFile ${provisioningFile} $profile $addOns $context $preview $serverVersionOption"
+    echo "java $JAVA_OPTS $compact -jar $jar scan $warFile ${provisioningFile} $profile $addOns $context $preview $serverVersionOption $spaces"
   fi
 
   found_layers=$(java $JAVA_OPTS $compact  -jar $jar scan \
@@ -57,7 +61,8 @@ else
   $addOns \
   $context \
   $preview \
-  $serverVersionOption)
+  $serverVersionOption\
+  $spaces)
 
   if [ "$found_layers" != "$expected" ]; then
     echo "ERROR $warFile, found layers $found_layers; expected $expected"
@@ -72,7 +77,8 @@ else
   $addOns \
   $context \
   $preview --provision=SERVER --fails-on-error=false \
-  $serverVersionOption
+  $serverVersionOption \
+  $spaces
   if [ $? -ne 0 ]; then
     echo "ERROR SERVER provisioning $warFile"
     test_failure=1
@@ -87,7 +93,8 @@ else
   $addOns \
   $context \
   $preview --provision=BOOTABLE_JAR --fails-on-error=false \
-  $serverVersionOption
+  $serverVersionOption \
+  $spaces
   if [ $? -ne 0 ]; then
     echo "ERROR BOOTABLE_JAR provisioning $warFile"
     test_failure=1
@@ -108,6 +115,24 @@ fi
 echo "* Show configuration cloud"
 
 java $JAVA_OPTS -jar $jar show-configuration --cloud $serverVersionOption
+
+if [ $? -ne 0 ]; then
+    echo "Error, check log"
+    exit 1
+fi
+
+echo "* Show configuration incubating"
+
+java $JAVA_OPTS -jar $jar show-configuration $serverVersionOption -sp=incubating
+
+if [ $? -ne 0 ]; then
+    echo "Error, check log"
+    exit 1
+fi
+
+echo "* Show configuration cloud incubating"
+
+java $JAVA_OPTS -jar $jar show-configuration --cloud $serverVersionOption -sp=incubating
 
 if [ $? -ne 0 ]; then
     echo "Error, check log"
@@ -183,6 +208,11 @@ test \
 "tests/war/servlet-saml-service-provider.war"
 
 ### END Extra feature-packs testing
+
+
+### Incubating space
+
+## TODO when we have a released AI FP. 
 
 
 if [ "$test_failure" -eq 1 ]; then
