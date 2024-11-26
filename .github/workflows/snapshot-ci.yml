@@ -11,7 +11,7 @@ on:
       - 'release'
     types: [opened, synchronize, reopened, ready_for_review]
 env:
-  WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.0.5.Final/wildfly-glow-1.0.5.Final.zip
+  WILDFLY_GLOW: https://github.com/wildfly/wildfly-glow/releases/download/1.2.0.Beta1/wildfly-glow-1.2.0.Beta1.zip
 jobs:
   WildFly-build:
     uses: wildfly/wildfly/.github/workflows/shared-wildfly-build.yml@main
