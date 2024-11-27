@@ -212,8 +212,20 @@ test \
 
 ### Incubating space
 
-## TODO when we have a released AI FP. 
-
+# AI FP is not yet in the latest fWildFly Final release
+# This version check is to be removed for WF 35 Final
+if [[ "$serverVersion" =~ .*-SNAPSHOT ]]; then
+echo Incubating ai feature-pack
+test \
+"[ai, cdi, default-embedding-content-retriever, ee-integration, jaxrs, ollama-chat-model, servlet]==>ee-core-profile-server,default-embedding-content-retriever,jaxrs,ollama-chat-model" \
+"tests/war/webchat.war" \
+"" \
+"" \
+"" \
+"" \
+"" \
+incubating
+fi
 
 if [ "$test_failure" -eq 1 ]; then
   echo "There were test failures! See the above output for details."
