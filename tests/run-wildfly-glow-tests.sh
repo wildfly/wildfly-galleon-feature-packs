@@ -212,7 +212,7 @@ test \
 
 ### Incubating space
 
-# AI FP is not yet in the latest fWildFly Final release
+# AI FP is not yet in the latest WildFly Final release
 # This version check is to be removed for WF 35 Final
 if [[ "$serverVersion" =~ .*-SNAPSHOT ]]; then
 echo Incubating ai feature-pack
@@ -225,6 +225,18 @@ test \
 "" \
 "" \
 incubating
+
+echo Incubating ai feature-pack with opentelemetry support.
+test \
+"[ai, cdi, default-embedding-content-retriever, ee-integration, jaxrs, ollama-chat-model, opentelemetry, servlet]==>ee-core-profile-server,default-embedding-content-retriever,jaxrs,ollama-chat-model,opentelemetry" \
+"tests/war/webchat-opentelemetry.war" \
+"" \
+"" \
+"" \
+"" \
+"" \
+incubating
+
 fi
 
 if [ "$test_failure" -eq 1 ]; then
