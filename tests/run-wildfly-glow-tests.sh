@@ -225,7 +225,7 @@ incubating
 
 echo Incubating ai feature-pack with opentelemetry support.
 test \
-"[ai, cdi, default-embedding-content-retriever, ee-integration, jaxrs, ollama-chat-model, opentelemetry, servlet]==>ee-core-profile-server,default-embedding-content-retriever,jaxrs,ollama-chat-model" \
+"[ai, cdi, default-embedding-content-retriever, ee-integration, jaxrs, ollama-chat-model, opentelemetry, servlet]==>ee-core-profile-server,default-embedding-content-retriever,jaxrs,ollama-chat-model,opentelemetry" \
 "tests/war/webchat-opentelemetry.war" \
 "" \
 "" \
