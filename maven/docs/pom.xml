@@ -103,7 +103,7 @@
                         <configuration>
                             <sourceDirectory>${basedir}/target/resources</sourceDirectory>
                             <sourceDocumentName>index.adoc</sourceDocumentName>
-                            <outputDirectory>${basedir}</outputDirectory>
+                            <outputDirectory>${basedir}/../../docs</outputDirectory>
                             <imagesDir>images</imagesDir>
                             <backend>html</backend>
                             <doctype>book</doctype>
