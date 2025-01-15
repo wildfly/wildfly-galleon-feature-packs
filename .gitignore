@@ -1,4 +1,5 @@
-/docs/target/
+maven/docs/target/
 
 # Igore IDEA files
 .idea
+maven/maven-metadata/target/

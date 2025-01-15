@@ -444,7 +444,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Jean-Francois Denise</span><br>
 <span id="revnumber">version 1.0.0.Final,</span>
-<span id="revdate">2025-01-09T08:59:34Z</span>
+<span id="revdate">2025-01-15T15:29:46Z</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -482,6 +482,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_supported_galleon_feature_packs_4">3.2.1. Supported Galleon feature-packs</a></li>
 <li><a href="#_galleon_layers_and_associated_discovery_rules_4">3.2.2. Galleon layers and associated discovery rules</a></li>
 <li><a href="#_add_ons_4">3.2.3. Add-ons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_additional_incubating_space">4. Additional 'incubating' space</a>
+<ul class="sectlevel2">
+<li><a href="#_support_for_wildfly_35_0_0_final_2">4.1. Support for WildFly 35.0.0.Final</a></li>
+<li><a href="#_bare_metal_3">4.2. bare-metal</a>
+<ul class="sectlevel3">
+<li><a href="#_supported_galleon_feature_packs_5">4.2.1. Supported Galleon feature-packs</a></li>
+<li><a href="#_galleon_layers_and_associated_discovery_rules_5">4.2.2. Galleon layers and associated discovery rules</a></li>
+<li><a href="#_add_ons_5">4.2.3. Add-ons</a></li>
+</ul>
+</li>
+<li><a href="#_cloud_3">4.3. cloud</a>
+<ul class="sectlevel3">
+<li><a href="#_supported_galleon_feature_packs_6">4.3.1. Supported Galleon feature-packs</a></li>
+<li><a href="#_galleon_layers_and_associated_discovery_rules_6">4.3.2. Galleon layers and associated discovery rules</a></li>
+<li><a href="#_add_ons_6">4.3.3. Add-ons</a></li>
 </ul>
 </li>
 </ul>
@@ -4111,11 +4130,553 @@ org.wildfly.cloud:wildfly-preview-cloud-galleon-pack:7.0.2.Final</pre></div></td
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_additional_incubating_space"><a class="anchor" href="#_additional_incubating_space"></a><a class="link" href="#_additional_incubating_space">4. Additional 'incubating' space</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Incubating feature-packs</p>
+</div>
+<div class="sect2">
+<h3 id="_support_for_wildfly_35_0_0_final_2"><a class="anchor" href="#_support_for_wildfly_35_0_0_final_2"></a><a class="link" href="#_support_for_wildfly_35_0_0_final_2">4.1. Support for WildFly 35.0.0.Final</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_bare_metal_3"><a class="anchor" href="#_bare_metal_3"></a><a class="link" href="#_bare_metal_3">4.2. bare-metal</a></h3>
+<div class="sect3">
+<h4 id="_supported_galleon_feature_packs_5"><a class="anchor" href="#_supported_galleon_feature_packs_5"></a><a class="link" href="#_supported_galleon_feature_packs_5">4.2.1. Supported Galleon feature-packs</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>org.wildfly:wildfly-ai-feature-pack:0.3.2</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_galleon_layers_and_associated_discovery_rules_5"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules_5"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules_5">4.2.2. <a id="glow.table.bare-metal"></a>Galleon layers and associated discovery rules</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Layer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rule(s)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feature-pack(s)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.annotations">org.wildfly.rule.annotations</a>=dev.langchain4j.<strong>,org.eclipse.microprofile.ai.llm.</strong><br>
+<a href="#glow.org.wildfly.rule.class">org.wildfly.rule.class</a>=dev.langchain4j.<strong>,org.eclipse.microprofile.ai.llm.</strong><br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default-embedding-content-retriever</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-content-retriever,default-embedding-content-retriever<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=all-dependencies<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use embedding content retriever<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.rag.content.retriever.ContentRetriever,jakarta.inject.Named[value=embedding-store-retriever]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-all-minilm-l6-v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-all-minilm-l6-v2<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=SentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-all-minilm-l6-v2-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-all-minilm-l6-v2-q<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Quantized SentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-bge-small-en<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-bge-small-en-q<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Quantized BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-v15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-bge-small-en-v15<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=BAAI bge-small-en-v1.5 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-v15-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-bge-small-en-v15-q<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Quantized BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-e5-small-v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-e5-small-v2<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Microsoft E5-small-v2 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-e5-small-v2-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-e5-small-v2-q<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Quantized Microsoft E5-small-v2 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-store,in-memory-embedding-store<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use an in memory embedding store<br>
+<a href="#glow.org.wildfly.rule.expect-add-on-family">org.wildfly.rule.expect-add-on-family</a>=ai-embedding-model<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mistral-ai-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-llm,mistral-ai-chat-model<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use MistralAI API for LLM interactions<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.model.chat.ChatLanguageModel,jakarta.inject.Named[value=mistral]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">neo4j-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-store,neo4j-embedding-store<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use Neo4J as an embedding store<br>
+<a href="#glow.org.wildfly.rule.expect-add-on-family">org.wildfly.rule.expect-add-on-family</a>=ai-embedding-model<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ollama-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-llm,ollama-chat-model<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use ollama for LLM interactions and embeddings<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.model.chat.ChatLanguageModel,jakarta.inject.Named[value=ollama]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ollama-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,ollama-embedding-model<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use ollama for embedding<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openai-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-llm,openai-chat-model<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use OpenAI API for LLM interactions<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.model.chat.ChatLanguageModel,jakarta.inject.Named[value=openai]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">weaviate-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-store,weaviate-embedding-store<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use Weaviate as an embedding store<br>
+<a href="#glow.org.wildfly.rule.expect-add-on-family">org.wildfly.rule.expect-add-on-family</a>=ai-embedding-model<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web-search-engines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-content-retriever,web-search-engines<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use Web search engines as content retrievers<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.rag.content.retriever.ContentRetriever,jakarta.inject.Named[value=web-search-retriever]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_add_ons_5"><a class="anchor" href="#_add_ons_5"></a><a class="link" href="#_add_ons_5">4.2.3. <a id="glow.table.addons.bare-metal"></a>Add-ons</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add-on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default-embedding-content-retriever</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-content-retriever</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use embedding content retriever</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-all-minilm-l6-v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-all-minilm-l6-v2-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantized SentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantized BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-v15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BAAI bge-small-en-v1.5 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-v15-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantized BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-e5-small-v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microsoft E5-small-v2 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-e5-small-v2-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantized Microsoft E5-small-v2 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use an in memory embedding store</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mistral-ai-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-llm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use MistralAI API for LLM interactions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">neo4j-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Neo4J as an embedding store</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ollama-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-llm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use ollama for LLM interactions and embeddings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ollama-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use ollama for embedding</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openai-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-llm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use OpenAI API for LLM interactions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">weaviate-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Weaviate as an embedding store</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web-search-engines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-content-retriever</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Web search engines as content retrievers</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cloud_3"><a class="anchor" href="#_cloud_3"></a><a class="link" href="#_cloud_3">4.3. cloud</a></h3>
+<div class="sect3">
+<h4 id="_supported_galleon_feature_packs_6"><a class="anchor" href="#_supported_galleon_feature_packs_6"></a><a class="link" href="#_supported_galleon_feature_packs_6">4.3.1. Supported Galleon feature-packs</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>org.wildfly:wildfly-ai-feature-pack:0.3.2</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_galleon_layers_and_associated_discovery_rules_6"><a class="anchor" href="#_galleon_layers_and_associated_discovery_rules_6"></a><a class="link" href="#_galleon_layers_and_associated_discovery_rules_6">4.3.2. <a id="glow.table.cloud"></a>Galleon layers and associated discovery rules</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Layer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rule(s)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feature-pack(s)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.annotations">org.wildfly.rule.annotations</a>=dev.langchain4j.<strong>,org.eclipse.microprofile.ai.llm.</strong><br>
+<a href="#glow.org.wildfly.rule.class">org.wildfly.rule.class</a>=dev.langchain4j.<strong>,org.eclipse.microprofile.ai.llm.</strong><br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default-embedding-content-retriever</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-content-retriever,default-embedding-content-retriever<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=all-dependencies<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use embedding content retriever<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.rag.content.retriever.ContentRetriever,jakarta.inject.Named[value=embedding-store-retriever]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-all-minilm-l6-v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-all-minilm-l6-v2<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=SentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-all-minilm-l6-v2-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-all-minilm-l6-v2-q<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Quantized SentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-bge-small-en<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-bge-small-en-q<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Quantized BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-v15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-bge-small-en-v15<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=BAAI bge-small-en-v1.5 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-v15-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-bge-small-en-v15-q<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Quantized BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-e5-small-v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-e5-small-v2<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Microsoft E5-small-v2 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-e5-small-v2-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,in-memory-embedding-model-e5-small-v2-q<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Quantized Microsoft E5-small-v2 embedding model that runs within your Java application&#8217;s process.<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-store,in-memory-embedding-store<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use an in memory embedding store<br>
+<a href="#glow.org.wildfly.rule.expect-add-on-family">org.wildfly.rule.expect-add-on-family</a>=ai-embedding-model<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mistral-ai-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-llm,mistral-ai-chat-model<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use MistralAI API for LLM interactions<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.model.chat.ChatLanguageModel,jakarta.inject.Named[value=mistral]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">neo4j-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-store,neo4j-embedding-store<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use Neo4J as an embedding store<br>
+<a href="#glow.org.wildfly.rule.expect-add-on-family">org.wildfly.rule.expect-add-on-family</a>=ai-embedding-model<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ollama-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-llm,ollama-chat-model<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use ollama for LLM interactions and embeddings<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.model.chat.ChatLanguageModel,jakarta.inject.Named[value=ollama]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ollama-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-model,ollama-embedding-model<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use ollama for embedding<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openai-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-llm,openai-chat-model<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use OpenAI API for LLM interactions<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.model.chat.ChatLanguageModel,jakarta.inject.Named[value=openai]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">weaviate-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-embedding-store,weaviate-embedding-store<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=only:ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use Weaviate as an embedding store<br>
+<a href="#glow.org.wildfly.rule.expect-add-on-family">org.wildfly.rule.expect-add-on-family</a>=ai-embedding-model<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web-search-engines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#glow.org.wildfly.rule.add-on">org.wildfly.rule.add-on</a>=ai-content-retriever,web-search-engines<br>
+<a href="#glow.org.wildfly.rule.add-on-depends-on">org.wildfly.rule.add-on-depends-on</a>=ai<br>
+<a href="#glow.org.wildfly.rule.add-on-description">org.wildfly.rule.add-on-description</a>=Use Web search engines as content retrievers<br>
+<a href="#glow.org.wildfly.rule.annotated.type">org.wildfly.rule.annotated.type</a>=dev.langchain4j.rag.content.retriever.ContentRetriever,jakarta.inject.Named[value=web-search-retriever]<br></p></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>org.wildfly:wildfly-ai-feature-pack:0.3.2</pre></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_add_ons_6"><a class="anchor" href="#_add_ons_6"></a><a class="link" href="#_add_ons_6">4.3.3. <a id="glow.table.addons.cloud"></a>Add-ons</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add-on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default-embedding-content-retriever</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-content-retriever</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use embedding content retriever</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-all-minilm-l6-v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-all-minilm-l6-v2-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantized SentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantized BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-v15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BAAI bge-small-en-v1.5 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-bge-small-en-v15-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantized BAAI bge-small-en embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-e5-small-v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microsoft E5-small-v2 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-model-e5-small-v2-q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantized Microsoft E5-small-v2 embedding model that runs within your Java application&#8217;s process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in-memory-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use an in memory embedding store</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mistral-ai-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-llm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use MistralAI API for LLM interactions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">neo4j-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Neo4J as an embedding store</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ollama-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-llm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use ollama for LLM interactions and embeddings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ollama-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use ollama for embedding</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openai-chat-model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-llm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use OpenAI API for LLM interactions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">weaviate-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-embedding-store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Weaviate as an embedding store</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web-search-engines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai-content-retriever</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Web search engines as content retrievers</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0.Final<br>
-Last updated 2025-01-09 09:59:34 +0100
+Last updated 2025-01-15 16:29:47 +0100
 </div>
 </div>
 </body>
