@@ -129,14 +129,14 @@ function addVersions() {
         echo "$dir/versions.yaml file: adding ${newVersion} version"
         sed -i "/^versions=*/s/$/, ${newVersion}/" "$dir/versions.yaml"
 
-        if [ -d "$dir/docs" ]; then
+        if [ -d "$dir/maven/docs" ]; then
             if [ "$stability" = "Final" ]; then
               echo "Generating documentation..."
+              cd $dir/maven/docs
               # generate doc
-              cd $dir/docs
               mvn clean install
-              cd $dir/..
-              echo "Documentation has been generated in docs/index.html"
+              cd $dir/../..
+              echo "Documentation has been generated in maven/docs/index.html"
             fi
         fi
     fi
