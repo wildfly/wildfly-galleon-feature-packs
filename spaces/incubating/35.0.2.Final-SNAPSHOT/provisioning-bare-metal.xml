@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+
+<installation xmlns="urn:jboss:galleon:provisioning:3.0">
+    <feature-pack location="org.wildfly:wildfly-ai-feature-pack:0.3.4"/>
+</installation>
