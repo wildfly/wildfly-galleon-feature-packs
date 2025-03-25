@@ -31,6 +31,6 @@
 
     <name>WildFly Galleon feature-packs parent</name>
     <properties>
-        <version.org.wildfly.glow>1.3.0.Final</version.org.wildfly.glow>
+        <version.org.wildfly.glow>1.4.0.Final</version.org.wildfly.glow>
     </properties>
 </project>
