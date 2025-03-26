@@ -79,6 +79,7 @@
                     <generateRuleDescriptions>true</generateRuleDescriptions>
                     <generateKnownFeaturePacks>true</generateKnownFeaturePacks>
                     <repoPath>${basedir}/../..</repoPath>
+                    <spaces>true</spaces>
                 </configuration>
                 <executions>
                     <execution>
