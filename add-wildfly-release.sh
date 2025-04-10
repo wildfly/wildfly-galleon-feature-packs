@@ -41,7 +41,7 @@ function addVersions() {
     echo "Making changes to the directory $dir"
     # When adding a SNAPSHOT prior to have the next Final release released (due to some delay in releasing the Final).
     if [[ "$stability" =~ "SNAPSHOT" ]]; then
-        snapshotDir=$(find "$dir" -type d -iname "*-SNAPSHOT")
+        snapshotDir=$(find "$dir" -maxdepth 1 -type d -iname "*-SNAPSHOT")
         previousVersion=$(basename -a $dir/$snapshotDir)
         nextVersion=$newVersion
         echo "Adding a new SNAPSHOT $newVersion from the previous $previousVersion"
@@ -68,7 +68,7 @@ function addVersions() {
             nextVersion=$nextMajor.0.0.Beta1
             # Must delete the latest previous Major micro SNAPSHOT
             previousMajor=$((major - 1))
-            microSnapshotDir=$(find "$dir" -type d -iname "$previousMajor.0.*-SNAPSHOT")
+            microSnapshotDir=$(find "$dir" -maxdepth 1 -type d -iname "$previousMajor.0.*-SNAPSHOT")
             echo "XXX $microSnapshotDir"
             if [ -n "$microSnapshotDir" ]; then
               previousMicroSnapshotVersion=$(basename -a $microSnapshotDir)
