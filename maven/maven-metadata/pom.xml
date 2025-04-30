@@ -26,7 +26,7 @@
     </parent>
     <groupId>org.wildfly.galleon.feature-packs</groupId>
     <artifactId>wildfly-galleon-feature-packs-metadata</artifactId>
-    <version>7.0</version>
+    <version>7.0.0.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>WildFly Galleon feature-packs maven metadata</name>
@@ -50,7 +50,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-gpg-plugin</artifactId>
+               <version>3.2.7</version>
+               <executions>
+                 <execution>
+                   <id>sign-artifacts</id>
+                   <phase>verify</phase>
+                   <goals>
+                     <goal>sign</goal>
+                   </goals>
+                 </execution>
+               </executions>
+            </plugin>
         </plugins>
     </build>
+    <developers>
+      <developer>
+        <id>jdenise</id>
+        <name>Jean-Francois Denise</name>
+        <organization>Red Hat</organization>
+      </developer>
+    </developers>
 
 </project>
