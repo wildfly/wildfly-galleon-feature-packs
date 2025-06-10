@@ -214,7 +214,7 @@ test \
 
 echo Incubating ai feature-pack
 test \
-"[ai, cdi, default-embedding-content-retriever, ee-integration, jaxrs, ollama-chat-model, servlet]==>ee-core-profile-server,default-embedding-content-retriever,jaxrs,ollama-chat-model" \
+"[ai, cdi, chat-memory-provider, default-embedding-content-retriever, ee-integration, jaxrs, ollama-chat-model, ollama-streaming-chat-model, servlet]==>ee-core-profile-server,chat-memory-provider,default-embedding-content-retriever,jaxrs,ollama-chat-model,ollama-streaming-chat-model" \
 "tests/war/webchat.war" \
 "" \
 "" \
@@ -225,7 +225,7 @@ incubating
 
 echo Incubating ai feature-pack with opentelemetry support.
 test \
-"[ai, cdi, default-embedding-content-retriever, ee-integration, jaxrs, ollama-chat-model, opentelemetry, servlet]==>ee-core-profile-server,default-embedding-content-retriever,jaxrs,ollama-chat-model,opentelemetry" \
+"[ai, cdi, chat-memory-provider, default-embedding-content-retriever, ee-integration, jaxrs, ollama-chat-model, ollama-streaming-chat-model, opentelemetry, servlet]==>ee-core-profile-server,chat-memory-provider,default-embedding-content-retriever,jaxrs,ollama-chat-model,ollama-streaming-chat-model,opentelemetry" \
 "tests/war/webchat-opentelemetry.war" \
 "" \
 "" \
