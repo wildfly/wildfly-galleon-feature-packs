@@ -30,6 +30,28 @@
     <packaging>pom</packaging>
 
     <name>WildFly Galleon feature-packs maven metadata</name>
+    <description>WildFly Galleon feature-packs maven metadata</description>
+    <url>https://github.com/wildfly/wildfly-galleon-feature-packs</url>
+    <licenses>
+      <license>
+        <name>Apache License 2.0</name>
+        <url>http://repository.jboss.org/licenses/apache-2.0.txt</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
+    <developers>
+      <developer>
+        <id>jdenise</id>
+        <name>Jean-Francois Denise</name>
+        <organization>Red Hat</organization>
+      </developer>
+    </developers>
+    <scm>
+      <connection>scm:git:${wildfly.repo.scm.connection}</connection>
+      <developerConnection>scm:git:${wildfly.repo.scm.connection}</developerConnection>
+      <url>${wildfly.repo.scm.url}</url>
+      <tag>HEAD</tag>
+    </scm>
     <build>
         <plugins>
             <plugin>
@@ -50,28 +72,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-gpg-plugin</artifactId>
-               <version>3.2.8</version>
-               <executions>
-                 <execution>
-                   <id>sign-artifacts</id>
-                   <phase>verify</phase>
-                   <goals>
-                     <goal>sign</goal>
-                   </goals>
-                 </execution>
-               </executions>
-            </plugin>
         </plugins>
     </build>
-    <developers>
-      <developer>
-        <id>jdenise</id>
-        <name>Jean-Francois Denise</name>
-        <organization>Red Hat</organization>
-      </developer>
-    </developers>
-
 </project>

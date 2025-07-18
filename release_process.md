@@ -9,8 +9,10 @@ The steps detailed here are fully automated in the script `add-wildfly-release.s
 
 * Call `sh add-wildfly-release.sh <new release version>`
 * Review the changes, commit, open PR against the `release` branch, merge when green.
-* Call `sh deploy-maven-metadata.sh` WARNING: This script deploy the maven metadata to nexus repository manager, update, commit and push to the upstream release branch
-* Log into the nexus repository manager, close/release the staged repository
+* Call `sh deploy-staging-maven-metadata.sh` WARNING: This script deploy the maven metadata to nexus staging repo, 
+* Check deployment content in https://repository.jboss.org/nexus/#browse/browse:wildfly-staging
+* Once validated, call `sh deploy-release-maven-metadata.sh`. WARNING: This script deploy the maven metadata to nexus release repo, 
+update, commit and push to the upstream release branch.
 
 ## Details
 
