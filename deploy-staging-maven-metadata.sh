@@ -3,6 +3,7 @@
 echo "Deploying the maven metadata to nexus staging repository."
 
 cd maven/maven-metadata
+rm -rf target
 git pull --rebase upstream release
 
 mvn build-helper:parse-version versions:set -DnewVersion='${parsedVersion.nextMajorVersion}.0' versions:commit
