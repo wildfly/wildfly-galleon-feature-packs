@@ -11,6 +11,8 @@ The steps detailed here are fully automated in the script `add-wildfly-release.s
 * Review the changes, commit, open PR against the `release` branch, merge when green.
 * Call `sh deploy-staging-maven-metadata.sh` WARNING: This script deploy the maven metadata to nexus staging repo, 
 * Check deployment content in https://repository.jboss.org/nexus/#browse/browse:wildfly-staging
+* If something is wrong, call `sh deploy-delete-staging-maven-metadata.sh` it will delete the artifact from the wildfly-staging 
+and the last commit (version upgrade).
 * Once validated, call `sh deploy-release-maven-metadata.sh`. WARNING: This script deploy the maven metadata to nexus release repo, 
 update, commit and push to the upstream release branch.
 
