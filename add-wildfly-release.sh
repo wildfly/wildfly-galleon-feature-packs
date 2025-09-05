@@ -1,5 +1,16 @@
 #!/bin/bash
 
+set -e
+
+function configureSed() {
+    SED="sed -i.bak"
+    osType="$(uname -s)"
+    if [ "${osType}" == "Darwin" ]; then
+      SED='sed -i .bak';
+    fi
+    echo "sed options for this platform are ${SED}"
+}
+
 function createNewVersionDirectory() {
   targetDir=$3
   echo "Creating directory $targetDir/$2"
@@ -11,7 +22,8 @@ function createNewVersionDirectory() {
       for i in "${array[@]}"
       do
        echo "Updating file $i with release $2"
-       sed -i "s|${1}|${2}|" "$i"
+       ${SED} "s|${1}|${2}|" "$i"
+       rm "$i".bak
       done
       cd ..
   fi
@@ -78,7 +90,8 @@ function addVersions() {
             echo Creating the next micro SNAPSHOT release $dir/$nextMicroSnapshot
             createNewVersionDirectory $newVersion $nextMicroSnapshot $dir
             echo "$dir/versions.yaml file: adding ${newVersion} version"
-            sed -i "/^versions=*/s/$/, ${nextMicroSnapshot}/" $dir/versions.yaml
+            ${SED} "/^versions=*/s/$/, ${nextMicroSnapshot}/" $dir/versions.yaml
+            rm "$dir/versions.yaml".bak
           else
             if [[ "$stability" =~ "Beta" ]]; then
               nextVersion=$major.$minor.$micro.Final 
@@ -122,12 +135,14 @@ function addVersions() {
         if [ "$stability" = "Final" ]; then
           # update latest
           echo "$dir/versions.yaml file: updating the latest version to ${newVersion} version"
-          sed -i "/^latest: /clatest: ${newVersion}" "$dir/versions.yaml"
+          ${SED} "s/latest:.*/latest: ${newVersion}/g" "$dir/versions.yaml"
+          rm "$dir/versions.yaml.bak"
         fi
 
         # add the new version
         echo "$dir/versions.yaml file: adding ${newVersion} version"
-        sed -i "/^versions=*/s/$/, ${newVersion}/" "$dir/versions.yaml"
+        ${SED} "/^versions=*/s/$/, ${newVersion}/" "$dir/versions.yaml"
+        rm "$dir/versions.yaml.bak"
 
         if [ -d "$dir/maven/docs" ]; then
             if [ "$stability" = "Final" ]; then
@@ -145,18 +160,22 @@ function addVersions() {
     if [ ! -z "${nextVersion}" ]; then
      echo "$dir/versions.yaml file: removing ${previousVersion} version"
      echo "$dir/versions.yaml file: adding ${nextVersion} version"
-     sed -i "s|, ${previousVersion}||" "$dir/versions.yaml"
-     sed -i "s| ${previousVersion},||" "$dir/versions.yaml"
-     sed -i "/^versions=*/s/$/, ${nextVersion}/" "$dir/versions.yaml"
+     ${SED} "s|, ${previousVersion}||" "$dir/versions.yaml"
+     ${SED} "s| ${previousVersion},||" "$dir/versions.yaml"
+     ${SED} "/^versions=*/s/$/, ${nextVersion}/" "$dir/versions.yaml"
+     rm "$dir/versions.yaml.bak"
     fi
 
     # Remove the latest micro snapshot
     if [ ! -z "${previousMicroSnapshotVersion}" ]; then
      echo "$dir/versions.yaml file: removing ${previousMicroSnapshotVersion} version"
-     sed -i "s|, ${previousMicroSnapshotVersion}||" "$dir/versions.yaml"
-     sed -i "s| ${previousMicroSnapshotVersion},||" "$dir/versions.yaml"
+     ${SED} "s|, ${previousMicroSnapshotVersion}||" "$dir/versions.yaml"
+     ${SED} "s| ${previousMicroSnapshotVersion},||" "$dir/versions.yaml"
+     rm "$dir/versions.yaml.bak"
     fi
 }
+
+configureSed
 
 addVersions "."
 
