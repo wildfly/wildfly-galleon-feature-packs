@@ -26,7 +26,7 @@
     </parent>
     <groupId>org.wildfly.galleon.feature-packs</groupId>
     <artifactId>wildfly-galleon-feature-packs-metadata</artifactId>
-    <version>16.0</version>
+    <version>17.0</version>
     <packaging>pom</packaging>
 
     <name>WildFly Galleon feature-packs maven metadata</name>
