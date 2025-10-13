@@ -11,8 +11,19 @@ function configureSed() {
     echo "sed options for this platform are ${SED}"
 }
 
+function addFeaturePacks() {
+  echo "Adding all feature-packs from $1 to the set of known feature-packs"
+  while read -r line
+  do
+    if [[ $line =~ "location" ]]; then
+      loc=($(sed -r 's/.*location="([^"]+).*/\1/' <<< ${line}))
+      knownFeaturePacks+=($loc)
+    fi
+  done < "${1}"
+}
 function createNewVersionDirectory() {
   targetDir=$3
+  addToKnownfeaturePacks=$4
   echo "Creating directory $targetDir/$2"
   cp -r "$targetDir/${1}" "$targetDir/${2}"
   # Only change versions in the default space
@@ -24,8 +35,22 @@ function createNewVersionDirectory() {
        echo "Updating file $i with release $2"
        ${SED} "s|${1}|${2}|" "$i"
        rm "$i".bak
+       if [[ $i != *"tech-preview"* ]] && [[ "$addToKnownfeaturePacks" = "true" ]]; then
+         addFeaturePacks "$i"
+       fi
       done
       cd ..
+  else
+    # Only collect feature-packs from the space
+    pushd $targetDir/${2}
+      array=(`find . -type f -name "*.xml"`)
+      for i in "${array[@]}"
+      do
+       if [[ $i != *"tech-preview"* ]] && [[ "$addToKnownfeaturePacks" = "true" ]]; then
+         addFeaturePacks "$i"
+       fi
+      done
+    popd
   fi
 }
 
@@ -48,6 +73,10 @@ if [ -d "$newVersion" ]; then
   exit 1
 fi
 
+catalogDirectory="./catalog/$newVersion/"
+knownFeaturePacksFile="$catalogDirectory/feature-packs.json"
+knownFeaturePacks=()
+
 function addVersions() {
     dir=$1
     echo "Making changes to the directory $dir"
@@ -57,7 +86,7 @@ function addVersions() {
         previousVersion=$(basename -a $dir/$snapshotDir)
         nextVersion=$newVersion
         echo "Adding a new SNAPSHOT $newVersion from the previous $previousVersion"
-        createNewVersionDirectory $previousVersion $newVersion $dir
+        createNewVersionDirectory $previousVersion $newVersion $dir "false"
     else
         previousVersion=$(basename -a "$dir/$newVersion-SNAPSHOT")
         echo "PREVIOUS " $previousVersion
@@ -72,7 +101,7 @@ function addVersions() {
           fi
         fi
 
-        createNewVersionDirectory $previousVersion $newVersion $dir
+        createNewVersionDirectory $previousVersion $newVersion $dir "true"
         echo "OK1"
         if [ "$micro" = "0" ]; then
           if [ "$stability" = "Final" ]; then
@@ -88,7 +117,7 @@ function addVersions() {
             echo "previousMicroSnapshotVersion=$previousMicroSnapshotVersion"
             nextMicroSnapshot=$major.$minor.1.$stability-SNAPSHOT
             echo Creating the next micro SNAPSHOT release $dir/$nextMicroSnapshot
-            createNewVersionDirectory $newVersion $nextMicroSnapshot $dir
+            createNewVersionDirectory $newVersion $nextMicroSnapshot $dir "false"
             echo "$dir/versions.yaml file: adding ${newVersion} version"
             ${SED} "/^versions=*/s/$/, ${nextMicroSnapshot}/" $dir/versions.yaml
             rm "$dir/versions.yaml".bak
@@ -104,7 +133,7 @@ function addVersions() {
           nextSnapshot=$(basename -a $dir/$nextVersion-SNAPSHOT)
           if [ ! -d "$dir/$nextSnapshot" ]; then
             nextVersion=$nextVersion-SNAPSHOT
-            createNewVersionDirectory $newVersion $nextVersion $dir
+            createNewVersionDirectory $newVersion $nextVersion $dir "false"
           else
             echo "New SNAPSHOT version $nextVersion-SNAPSHOT already exists."
             nextVersion=
@@ -116,7 +145,7 @@ function addVersions() {
           # Create the new SNAPSHOT if it doesn't already exist
           if [ ! -d "$dir/$nextSnapshot" ]; then
             nextVersion=$nextVersion-SNAPSHOT
-            createNewVersionDirectory $newVersion $nextVersion $dir
+            createNewVersionDirectory $newVersion $nextVersion $dir "false"
           else
             echo "New SNAPSHOT version $nextVersion-SNAPSHOT already exists."
             nextVersion=
@@ -149,7 +178,7 @@ function addVersions() {
               echo "Generating documentation..."
               cd $dir/maven/docs
               # generate doc
-              mvn clean install
+              #mvn clean install
               cd $dir/../..
               echo "Documentation has been generated in maven/docs/index.html"
             fi
@@ -180,6 +209,28 @@ configureSed
 addVersions "."
 
 addVersions "spaces/incubating"
+
+unique_array=()
+for element in "${knownFeaturePacks[@]}"; do
+    if [[ ! " ${unique_array[@]} " =~ " $element " ]]; then
+        unique_array+=("$element")
+    fi
+done
+
+mkdir -p "${catalogDirectory}"
+
+val="{\"featurePacks\": ["
+size=${#unique_array[@]}
+size=$((size - 1))
+for i in "${!unique_array[@]}"; do
+  val+=\"${unique_array[$i]}\"
+  if (( $i < $size )); then
+    val+=","
+  fi
+done
+val+="]}"
+echo "$val" 
+echo "$val" > $knownFeaturePacksFile
 
 echo "DONE!"
 echo "NOTE: Please check that this project Issues: https://github.com/wildfly/wildfly-galleon-feature-packs/issues 
