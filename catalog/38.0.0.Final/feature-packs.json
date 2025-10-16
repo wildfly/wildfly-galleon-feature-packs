@@ -1,0 +1,1 @@
+{"featurePacks": ["org.wildfly:wildfly-galleon-pack:38.0.0.Final","org.wildfly:wildfly-datasources-galleon-pack:11.1.0.Final","org.wildfly.cloud:wildfly-cloud-galleon-pack:8.1.0.Final","org.wildfly.generative-ai:wildfly-ai-feature-pack:0.8.1"]}

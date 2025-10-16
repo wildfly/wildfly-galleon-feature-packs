@@ -178,7 +178,7 @@ function addVersions() {
               echo "Generating documentation..."
               cd $dir/maven/docs
               # generate doc
-              #mvn clean install
+              mvn clean install
               cd $dir/../..
               echo "Documentation has been generated in maven/docs/index.html"
             fi
