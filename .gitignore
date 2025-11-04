@@ -3,3 +3,5 @@ maven/docs/target/
 # Igore IDEA files
 .idea
 maven/maven-metadata/target/
+maven/add-wildfly-release/target/
+maven/docs/target/
