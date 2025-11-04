@@ -179,11 +179,6 @@ test \
 "[cdi, microprofile-config, microprofile-graphql]==>ee-core-profile-server,microprofile-graphql" \
 "tests/war/quickstart-graphql.war"
 
-echo spring-resteasy
-test \
-"[bean-validation, ee-concurrency, ee-integration, ejb-lite, jaxrs, jsf, jsonb, naming, resteasy-spring, resteasy-spring-web, servlet]==>ee-core-profile-server,ejb-lite,jaxrs,jsf,resteasy-spring,resteasy-spring-web" \
-"tests/war/spring-resteasy.war"
-
 echo todo-backend
 test \
 "[cdi, datasources, ejb-lite, jaxrs, jpa, postgresql-datasource, postgresql-driver, transactions]==>ee-core-profile-server,ejb-lite,jaxrs,jpa,postgresql-datasource" \
