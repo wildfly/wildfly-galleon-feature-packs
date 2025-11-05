@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.wildfly.galleon.feature-packs</groupId>
+        <artifactId>wildfly-galleon-feature-packs-parent</artifactId>
+        <version>1.0</version>
+    </parent>
+  <artifactId>add-wildfly-release</artifactId>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <exec.mainClass>org.wildfly.galleon.featurepacks.Main</exec.mainClass>
+    <version.com.fasterxml.jackson>2.18.2</version.com.fasterxml.jackson>
+    <version.org.jboss.galleon>6.0.4.Final</version.org.jboss.galleon>
+    <version.org.yaml.snakeyaml>2.5</version.org.yaml.snakeyaml>
+    <wildfly.repo.scm.connection>git@github.com:wildfly/wildfly-galleon-feature-packs.git</wildfly.repo.scm.connection>
+    <wildfly.repo.scm.url>https://github.com/wildfly/wildfly-galleon-feature-packs</wildfly.repo.scm.url>
+  </properties>
+  <name>WildFly version adder</name>
+  <description>WildFly version adder</description>
+  <url>https://github.com/wildfly/wildfly-galleon-feature-packs</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>wildfly.org</id>
+      <name>WildFly Community</name>
+      <organization>wildfly.org</organization>
+      <organizationUrl>https://wildfly.org</organizationUrl>
+    </developer>
+  </developers>
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${version.com.fasterxml.jackson}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.galleon</groupId>
+      <artifactId>galleon-core</artifactId>
+      <version>${version.org.jboss.galleon}</version>
+    </dependency>
+    <dependency>
+    <groupId>org.yaml</groupId>
+    <artifactId>snakeyaml</artifactId>
+    <version>${version.org.yaml.snakeyaml}</version>
+</dependency>
+  </dependencies>
+  <scm>
+    <connection>scm:git:${wildfly.repo.scm.connection}</connection>
+    <developerConnection>scm:git:${wildfly.repo.scm.connection}</developerConnection>
+    <url>${wildfly.repo.scm.url}</url>
+    <tag>HEAD</tag>
+  </scm>
+</project>
