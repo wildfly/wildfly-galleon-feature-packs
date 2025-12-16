@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
 
 <installation xmlns="urn:jboss:galleon:provisioning:3.0">
-    <feature-pack location="org.wildfly.generative-ai:wildfly-ai-feature-pack:0.8.1"/>
+    <feature-pack location="org.wildfly.generative-ai:wildfly-ai-feature-pack:0.9.0"/>
 </installation>
