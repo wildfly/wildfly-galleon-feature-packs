@@ -1,0 +1,3 @@
+{
+  "featurePacks" : [ "org.wildfly:wildfly-preview-feature-pack:39.0.0.Final", "org.wildfly:wildfly-datasources-preview-galleon-pack:11.2.0.Final", "org.wildfly.extras.grpc:wildfly-grpc-preview-feature-pack:0.1.15.Final", "org.wildfly.cloud:wildfly-preview-cloud-galleon-pack:8.1.0.Final" ]
+}
