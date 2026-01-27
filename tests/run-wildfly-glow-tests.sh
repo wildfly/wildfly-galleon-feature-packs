@@ -153,6 +153,16 @@ test \
 "" \
 cloud
 
+echo kitchensink cloud preview
+test \
+"[bean-validation, cdi, ee-integration, ejb-lite, h2-driver, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-lite,h2-driver,jaxrs,jpa,jsf" \
+"$WILDFLY_GLOW_DIR/examples/kitchensink.war" \
+"" \
+"" \
+"" \
+cloud \
+"true"
+
 echo kitchensink cloud HA
 test \
 "[ha][bean-validation, cdi, ee-integration, ejb-lite, h2-driver, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-dist-cache,ejb-lite,h2-driver,jaxrs,jpa-distributed,jsf,-ejb-local-cache" \
@@ -187,6 +197,16 @@ test \
 "" \
 "postgresql" \
 ""
+
+echo todo-backend preview
+test \
+"[cdi, datasources, ejb-lite, jaxrs, jpa, postgresql-datasource, postgresql-driver, transactions]==>ee-core-profile-server,ejb-lite,jaxrs,jpa,postgresql-datasource" \
+"tests/war/todo-backend.war" \
+"" \
+"" \
+"postgresql" \
+"" \
+"true"
 
 echo saml auto-registration
 test \
