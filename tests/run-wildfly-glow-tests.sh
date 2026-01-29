@@ -186,7 +186,7 @@ test \
 
 echo kitchensink + grpc on preview
 test \
-"[bean-validation, cdi, ee-integration, ejb-lite, grpc, h2-driver, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-lite,grpc,h2-driver,jaxrs,jpa" \
+"[bean-validation, cdi, ee-integration, ejb-lite, grpc, h2-driver, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-lite,grpc,h2-driver,jaxrs,jpa,jsf" \
 "$WILDFLY_GLOW_DIR/examples/kitchensink.war" \
 "" \
 "" \
