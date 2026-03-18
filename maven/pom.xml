@@ -47,7 +47,7 @@
       </developer>
     </developers>
     <properties>
-        <version.org.wildfly.glow>1.5.2.Final</version.org.wildfly.glow>
+        <version.org.wildfly.glow>2.0.0.Beta1</version.org.wildfly.glow>
         <version.gpg.plugin>3.2.8</version.gpg.plugin>
         <version.nxrm3.plugin>1.0.7</version.nxrm3.plugin>
         <!-- maven-gpg-plugin -->

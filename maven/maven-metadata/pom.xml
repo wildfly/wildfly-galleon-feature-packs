@@ -61,6 +61,8 @@
                 <configuration>
                     <targetDir>${basedir}/target</targetDir>
                     <repoPath>${basedir}/../..</repoPath>
+                    <!-- starting from this version, the layer configuration is packaged -->
+                    <minVersionWithPackagedConfig>40.0.0.Beta1</minVersionWithPackagedConfig>
                 </configuration>
                 <executions>
                     <execution>
