@@ -7,4 +7,5 @@
     <feature-pack location="org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.16.Final"/>
     <feature-pack location="org.wildfly:wildfly-myfaces-feature-pack:2.0.2.Final"/>
     <feature-pack location="org.wildfly.extras.graphql:wildfly-microprofile-graphql-feature-pack:2.6.0.Final"/>
+    <feature-pack location="org.wildfly.security.vault:wildfly-vault-feature-pack:1.0.0.Alpha3"/>
 </installation>

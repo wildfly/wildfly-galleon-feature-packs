@@ -194,6 +194,25 @@ test \
 "" \
 "true"
 
+echo kitchensink + hashicorp-vault
+test \
+"[bean-validation, cdi, ee-integration, ejb-lite, h2-driver, hashicorp-vault, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-lite,h2-driver,hashicorp-vault,jaxrs,jpa,jsf" \
+"$WILDFLY_GLOW_DIR/examples/kitchensink.war" \
+"" \
+"" \
+"hashicorp-vault" \
+""
+
+echo kitchensink + hashicorp-vault on preview
+test \
+"[bean-validation, cdi, ee-integration, ejb-lite, h2-driver, hashicorp-vault, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-lite,hashicorp-vault,h2-driver,jaxrs,jpa,jsf" \
+"$WILDFLY_GLOW_DIR/examples/kitchensink.war" \
+"" \
+"" \
+"hashicorp-vault" \
+"" \
+"true"
+
 echo graphql
 test \
 "[cdi, microprofile-config, microprofile-graphql]==>ee-core-profile-server,microprofile-graphql" \
