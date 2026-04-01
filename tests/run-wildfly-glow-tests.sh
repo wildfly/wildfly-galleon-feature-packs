@@ -203,6 +203,17 @@ test \
 "hashicorp-vault" \
 ""
 
+echo kitchensink + hashicorp-vault on preview
+test \
+"[bean-validation, cdi, core-tools, ee-integration, ejb-lite, elytron, h2-driver, hashicorp-vault, jaxrs, jpa, jsf, management]==>ee-core-profile-server,ejb-lite,h2-driver,hashicorp-vault,jaxrs,jpa,jsf" \
+"$WILDFLY_GLOW_DIR/examples/kitchensink.war" \
+"" \
+"" \
+"hashicorp-vault" \
+"" \
+"true"
+
+
 echo graphql
 test \
 "[cdi, microprofile-config, microprofile-graphql]==>ee-core-profile-server,microprofile-graphql" \
