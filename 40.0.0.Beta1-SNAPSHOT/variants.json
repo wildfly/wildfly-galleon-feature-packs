@@ -3,6 +3,11 @@
             "name": "preview",
             "directory": "tech-preview",
             "description": "WildFly Preview"
+        },
+        {
+            "name": "ee-10",
+            "directory": "ee-10",
+            "description": "WildFly EE 10"
         }
         
 ]}

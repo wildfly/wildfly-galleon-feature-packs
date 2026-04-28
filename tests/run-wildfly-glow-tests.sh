@@ -19,7 +19,7 @@ function test {
   provisioningFile=$4
   addOns=$5
   context=$6
-  preview=$7
+  variant=$7
   spaces=$8
   test_count=$((test_count+1))
 
@@ -39,19 +39,19 @@ fi
 if [ ! -z "$context" ]; then
   context="--$context";
 fi
-if [ ! -z "$preview" ]; then
-  preview="--wildfly-preview";
+if [ ! -z "$variant" ]; then
+  variant="--server-variant=$variant";
 fi
 if [ ! -z "$spaces" ]; then
   spaces="--spaces=$spaces";
 fi
 if [ ! -z $GENERATE_CONFIG ]; then
- echo "java -jar -Dverbose=true $JAVA_OPTS $jar scan $warFile ${provisioningFile} $profile $addOns $preview $serverVersionOption $spaces"
- java -Dverbose=true $JAVA_OPTS -jar $jar scan $warFile ${provisioningFile} $profile $addOns $preview $serverVersionOption $spaces
+ echo "java -jar -Dverbose=true $JAVA_OPTS $jar scan $warFile ${provisioningFile} $profile $addOns $variant $serverVersionOption $spaces"
+ java -Dverbose=true $JAVA_OPTS -jar $jar scan $warFile ${provisioningFile} $profile $addOns $variant $serverVersionOption $spaces
 else
 
   if [ "$DEBUG" = 1 ]; then
-    echo "java $JAVA_OPTS $compact -jar $jar scan $warFile ${provisioningFile} $profile $addOns $context $preview $serverVersionOption $spaces"
+    echo "java $JAVA_OPTS $compact -jar $jar scan $warFile ${provisioningFile} $profile $addOns $context $variant $serverVersionOption $spaces"
   fi
 
   found_layers=$(java $JAVA_OPTS $compact  -jar $jar scan \
@@ -60,8 +60,8 @@ else
   $profile \
   $addOns \
   $context \
-  $preview \
-  $serverVersionOption\
+  $variant \
+  $serverVersionOption \
   $spaces)
 
   if [ "$found_layers" != "$expected" ]; then
@@ -76,7 +76,7 @@ else
   $profile \
   $addOns \
   $context \
-  $preview --provision=SERVER --fails-on-error=false \
+  $variant --provision=SERVER --fails-on-error=false \
   $serverVersionOption \
   $spaces
   if [ $? -ne 0 ]; then
@@ -92,7 +92,7 @@ else
   $profile \
   $addOns \
   $context \
-  $preview --provision=BOOTABLE_JAR --fails-on-error=false \
+  $variant --provision=BOOTABLE_JAR --fails-on-error=false \
   $serverVersionOption \
   $spaces
   if [ $? -ne 0 ]; then
@@ -161,7 +161,7 @@ test \
 "" \
 "" \
 cloud \
-"true"
+"preview"
 
 echo kitchensink cloud HA
 test \
@@ -171,6 +171,27 @@ test \
 "" \
 "" \
 cloud
+
+echo kitchensink EE-10
+test \
+"[bean-validation, cdi, ee-integration, ejb-lite, h2-driver, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-lite,h2-driver,jaxrs,jpa,jsf" \
+"$WILDFLY_GLOW_DIR/examples/kitchensink.war" \
+"" \
+"" \
+"" \
+"" \
+"ee-10"
+
+
+echo kitchensink cloud EE-10
+test \
+"[bean-validation, cdi, ee-integration, ejb-lite, h2-driver, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-lite,h2-driver,jaxrs,jpa,jsf" \
+"$WILDFLY_GLOW_DIR/examples/kitchensink.war" \
+"" \
+"" \
+"" \
+cloud \
+"ee-10"
 
 ### Extra feature-packs testing
 
@@ -192,7 +213,7 @@ test \
 "" \
 "grpc" \
 "" \
-"true"
+"preview"
 
 echo kitchensink + hashicorp-vault
 test \
@@ -211,7 +232,7 @@ test \
 "" \
 "hashicorp-vault" \
 "" \
-"true"
+"preview"
 
 
 echo graphql
@@ -236,7 +257,7 @@ test \
 "" \
 "postgresql" \
 "" \
-"true"
+"preview"
 
 echo saml auto-registration
 test \
@@ -277,7 +298,7 @@ test \
 "" \
 "" \
 "" \
-"true" \
+"preview" \
 incubating
 
 echo Incubating ai feature-pack with opentelemetry support.
