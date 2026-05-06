@@ -262,7 +262,9 @@ public class Main {
                     }
                     builder.addFeaturePackDep(loc);
                 }
-
+                for (Entry<String, String> entry : cfg.getOptions().entrySet()) {
+                    builder.addOption(entry.getKey(), entry.getValue());
+                }
                 ProvisioningXmlWriter.getInstance().write(builder.build(), f);
             }
         }
