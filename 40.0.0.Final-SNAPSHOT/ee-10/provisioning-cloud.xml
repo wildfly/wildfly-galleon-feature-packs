@@ -3,7 +3,7 @@
 <installation xmlns="urn:jboss:galleon:provisioning:3.0">
     <feature-pack location="org.wildfly:wildfly-ee-10-feature-pack:40.0.0.Final-SNAPSHOT"/>
     <feature-pack location="org.wildfly:wildfly-galleon-pack:40.0.0.Final-SNAPSHOT"/>
-    <feature-pack location="org.wildfly.cloud:wildfly-cloud-galleon-pack:9.2.2.Final"/>
+    <feature-pack location="org.wildfly.cloud:wildfly-cloud-galleon-pack:9.2.3.Final"/>
     <feature-pack location="org.wildfly:wildfly-datasources-galleon-pack:11.3.0.Final"/>
     <feature-pack location="org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.16.Final"/>
     <feature-pack location="org.wildfly.security.vault:wildfly-vault-feature-pack:1.0.0.CR1"/>
