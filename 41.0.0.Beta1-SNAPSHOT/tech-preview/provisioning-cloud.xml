@@ -5,5 +5,5 @@
     <feature-pack location="org.wildfly.cloud:wildfly-cloud-galleon-pack:9.2.3.Final"/>
     <feature-pack location="org.wildfly:wildfly-datasources-galleon-pack:11.4.0.Final"/>
     <feature-pack location="org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.16.Final"/>
-    <feature-pack location="org.wildfly.security.vault:wildfly-vault-feature-pack:1.0.0.CR1"/>
+    <feature-pack location="org.wildfly.security.vault:wildfly-vault-feature-pack:1.0.0.Final"/>
 </installation>
