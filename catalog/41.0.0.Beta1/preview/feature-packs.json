@@ -1,0 +1,3 @@
+{
+  "featurePacks" : [ "org.wildfly:wildfly-preview-feature-pack:41.0.0.Beta1", "org.wildfly:wildfly-datasources-galleon-pack:11.4.0.Final", "org.wildfly.grpc:wildfly-grpc-feature-pack:0.2.0.Final", "org.wildfly.security.vault:wildfly-vault-feature-pack:1.0.0.Final", "org.wildfly.cloud:wildfly-cloud-galleon-pack:9.2.3.Final", "org.wildfly.generative-ai:wildfly-ai-feature-pack:0.9.1" ]
+}
