@@ -1,0 +1,9 @@
+{
+  "variants" : [ {
+    "description" : "WildFly Preview",
+    "directory" : "preview"
+  }, {
+    "description" : "WildFly EE 10",
+    "directory" : "ee-10"
+  } ]
+}
