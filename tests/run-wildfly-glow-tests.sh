@@ -172,6 +172,11 @@ test \
 "" \
 cloud
 
+# START EE-10 variant
+# The latest version for EE-10 variant is WildFly 41
+# So still in use to test 41.0.1.Final
+# To be removed when releasing WildFly 42 Beta1
+if [[ ${serverVersion} =~ 41.* ]]; then
 echo kitchensink EE-10
 test \
 "[bean-validation, cdi, ee-integration, ejb-lite, h2-driver, jaxrs, jpa, jsf]==>ee-core-profile-server,ejb-lite,h2-driver,jaxrs,jpa,jsf" \
@@ -192,6 +197,9 @@ test \
 "" \
 cloud \
 "ee-10"
+fi
+# END EE-10 variant
+
 
 ### Extra feature-packs testing
 
