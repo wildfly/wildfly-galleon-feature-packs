@@ -9,15 +9,9 @@ We are also preparing a new SNAPSHOT version (if needed). It all depends on the 
 * Call `sh add-wildfly-release.sh <new release version>`, for example `sh add-wildfly-release.sh 40.0.0.Beta1`
 * Review the changes, commit, open PR against the `release` branch, merge when green (ignore the SNAPSHOT CI that can be red due to new SNAPSHOT version not yet updated in WildFly repo).
 * Pull the changes: `git pull --rebase upstream release`
-* Call `sh deploy-staging-maven-metadata.sh` WARNING: This script deploy the maven metadata to nexus staging repo, 
-* Check deployment content in https://repository.jboss.org/nexus/#browse/browse:wildfly-staging Coordinates are `org.wildfly.galleon.feature-packs:wildfly-galleon-feature-packs-metadata`
-* Access the wildfly-staging validation task (https://repository.jboss.org/nexus/#admin/system/tasks:cb5eaab4-655c-4863-90b0-eba8f8ccae2c) 
-* Update the settings `Filter` with `tag=wildfly-galleon-feature-packs-<released version>`
-* Save the settings, run the task, clear the `Filter`, save again the settings.
-* If something is wrong, call `sh deploy-delete-staging-maven-metadata.sh` it will delete the artifact from the wildfly-staging 
-and the last commit (version upgrade).
-* Once validated, call `sh deploy-release-maven-metadata.sh`. WARNING: This script deploy the maven metadata to nexus release repo, 
-update, commit and push to the upstream release branch.
+* Call `sh deploy-staging-maven-metadata.sh` WARNING: This script deploy but doesn't publish the maven metadata to central repo, 
+* Access https://central.sonatype.com/publishing/deployments, check that the component is validated.
+* Publish it from the sonatype UI. 
 * DONE, you can advertise that the WildFly Glow metadata has been released.
 
 ## Details

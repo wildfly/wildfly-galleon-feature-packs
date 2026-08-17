@@ -26,7 +26,7 @@
     </parent>
     <groupId>org.wildfly.galleon.feature-packs</groupId>
     <artifactId>wildfly-galleon-feature-packs-metadata</artifactId>
-    <version>29.0</version>
+    <version>30.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>WildFly Galleon feature-packs maven metadata</name>
@@ -52,6 +52,20 @@
       <url>${wildfly.repo.scm.url}</url>
       <tag>HEAD</tag>
     </scm>
+    <properties>
+      <!-- maven-release-plugin configuration -->
+      <autoVersionSubmodules>true</autoVersionSubmodules>
+      <releaseProfiles>central-release</releaseProfiles>
+      <signTag>true</signTag>
+      <tagNameFormat>v@{project.version}</tagNameFormat>
+      <arguments>-DskipTests -Dcentral.autoPublish=${central.autoPublish} -Dcentral.waitUntil=${central.waitUntil}</arguments>
+      <!-- Do not push changes by default when using the maven-release-plugin:prepare -->
+      <pushChanges>false</pushChanges>
+      <!-- Use the local directory when using perform -->
+      <localCheckout>true</localCheckout>
+      <!-- Maven Central properties -->
+      <central.deploymentName>wildfly-galleon-feature-packs-${project.version}</central.deploymentName>
+    </properties>
     <build>
         <plugins>
             <plugin>
