@@ -9,9 +9,8 @@ We are also preparing a new SNAPSHOT version (if needed). It all depends on the 
 * Call `sh add-wildfly-release.sh <new release version>`, for example `sh add-wildfly-release.sh 40.0.0.Beta1`
 * Review the changes, commit, open PR against the `release` branch, merge when green (ignore the SNAPSHOT CI that can be red due to new SNAPSHOT version not yet updated in WildFly repo).
 * Pull the changes: `git pull --rebase upstream release`
-* Call `sh deploy-staging-maven-metadata.sh` WARNING: This script deploy but doesn't publish the maven metadata to central repo, 
-* Access https://central.sonatype.com/publishing/deployments, check that the component is validated.
-* Publish it from the sonatype UI. 
+* Call `bash release-publish-maven-metadata.sh` WARNING: This script does the release and publishes the maven metadata to central repo. 
+* In case publishing goes wrong, access https://central.sonatype.com/publishing/deployments, and drop the component.
 * DONE, you can advertise that the WildFly Glow metadata has been released.
 
 ## Details
