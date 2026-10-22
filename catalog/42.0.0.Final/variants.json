@@ -1,0 +1,6 @@
+{
+  "variants" : [ {
+    "description" : "WildFly Preview",
+    "directory" : "preview"
+  } ]
+}
